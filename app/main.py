@@ -191,7 +191,7 @@ if page == 'Accueil - Suivi de la tension':
                 with col3:
                     mesure_3_systole_jour_7_soir = st.slider('Mesure 3 Systole Jour 7 Soir', min_value=0, max_value=200)
                     mesure_3_diastole_jour_7_soir = st.slider('Mesure 3 Diastole Jour 7 Soir', min_value=0, max_value=200)
-        clickSubmit = st.form_submit_button('Soumettre')
+        clickSubmit = st.form_submit_button('Soumettre le formulaire')
 
     if clickSubmit:
         #jour 1 matin
@@ -404,7 +404,7 @@ if page == 'Accueil - Suivi de la tension':
         #draw chart
         st.line_chart(chart_data, x='x', y=['y_systole', 'y_diastole'])
     else:
-        st.markdown("Soumettre le formulaire affichera les courbes des valeurs moyennes")
+        st.markdown("Soumettre le formulaire pour afficher les courbes des valeurs moyennes")
 
 elif page == 'Protocole et règle des 3':
     stb.true_or_false("Test qcm 1, vrai ou faux", 
