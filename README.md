@@ -1,6 +1,6 @@
 # Application de suivi de la tension artérielle
 
-Cette application permet de suivre votre tension artérielle au fil du temps. Vous pouvez entrer vos valeurs de tension systolique et diastolique, et l'application affiche une courbe de vos valeurs de tension au fil du temps.
+Cette application permet de suivre votre tension artérielle au fil du temps. Vous pouvez entrer vos valeurs de tension systolique et diastolique, et l'application affiche une courbe de vos valeurs moyennes de tension au fil des jours de suivi.
 
 ## Fonctionnalités
 
