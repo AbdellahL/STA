@@ -1,2 +1,0 @@
-# tetenlr
-dating life organization
