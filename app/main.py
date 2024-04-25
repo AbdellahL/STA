@@ -343,7 +343,7 @@ if page == 'Accueil - Suivi de la tension':
         # Update
         st.session_state['dataframe'] = data_df
             
-        st.session_state
+        
         
         #calcul des moyennes
         #Moyenne systole jour 1
