@@ -32,8 +32,8 @@ if page == 'Accueil - Suivi de la tension':
     with st.form('input_form'):
         tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Jour 1", "Jour 2", "Jour 3", "Jour 4", "Jour 5", "Jour 6", "Jour 7"])
         with tab1:
-            tab_j_1_matin, tab_j_1_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 1"):
+                tab_j_1_matin, tab_j_1_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_1_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -59,8 +59,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_1_soir = st.slider('Mesure 3 Systole Jour 1 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_1_soir = st.slider('Mesure 3 Diastole Jour 1 Soir', min_value=0, max_value=200)
         with tab2:
-            tab_j_2_matin, tab_2_1_soir = st.tabs(['Matin', 'Soir'])    
             with st.expander("Mesures de tension artérielle Jour 2"):
+                tab_j_2_matin, tab_2_1_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_2_matin:            
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -86,8 +86,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_2_soir = st.slider('Mesure 3 Systole Jour 2 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_2_soir = st.slider('Mesure 3 Diastole Jour 2 Soir', min_value=0, max_value=200)
         with tab3:
-            tab_j_3_matin, tab_j_3_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 3"):
+                tab_j_3_matin, tab_j_3_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_3_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -113,8 +113,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_3_soir = st.slider('Mesure 3 Systole Jour 3 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_3_soir = st.slider('Mesure 3 Diastole Jour 3 Soir', min_value=0, max_value=200)
         with tab4:
-            tab_j_4_matin, tab_j_4_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 4"):
+                tab_j_4_matin, tab_j_4_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_4_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -140,8 +140,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_4_soir = st.slider('Mesure 3 Systole Jour 4 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_4_soir = st.slider('Mesure 3 Diastole Jour 4 Soir', min_value=0, max_value=200)
         with tab5:
-            tab_j_5_matin, tab_j_5_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 5"):
+                tab_j_5_matin, tab_j_5_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_5_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -167,8 +167,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_5_soir = st.slider('Mesure 3 Systole Jour 5 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_5_soir = st.slider('Mesure 3 Diastole Jour 5 Soir', min_value=0, max_value=200)
         with tab6:
-            tab_j_6_matin, tab_j_6_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 6"):
+                tab_j_6_matin, tab_j_6_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_6_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -194,8 +194,8 @@ if page == 'Accueil - Suivi de la tension':
                             mesure_3_systole_jour_6_soir = st.slider('Mesure 3 Systole Jour 6 Soir', min_value=0, max_value=200)
                             mesure_3_diastole_jour_6_soir = st.slider('Mesure 3 Diastole Jour 6 Soir', min_value=0, max_value=200)
         with tab7:
-            tab_j_7_matin, tab_j_7_soir = st.tabs(['Matin', 'Soir'])
             with st.expander("Mesures de tension artérielle Jour 7"):
+                tab_j_7_matin, tab_j_7_soir = st.tabs(['Matin', 'Soir'])
                 with tab_j_7_matin:
                     with st.container():
                         col1, col2, col3 = st.columns(3)
@@ -459,6 +459,10 @@ if page == 'Accueil - Suivi de la tension':
         
         st.write("Points des valeurs moyennes de la pression artérielle sans les mesures du jour 1")
         st.scatter_chart(chart_data_without_measure_day_1, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
+        
+        # Initialization
+        if 'chart' not in st.session_state:
+            st.session_state['key'] = 'value'
     else:
         st.markdown("Soumettre le formulaire pour afficher les courbes des valeurs moyennes")
 
