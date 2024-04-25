@@ -333,7 +333,17 @@ if page == 'Accueil - Suivi de la tension':
         data_df.loc[13, 'Mesure 2 Systole'] = mesure_2_systole_jour_7_soir
         data_df.loc[13, 'Mesure 2 Diastole'] = mesure_2_diastole_jour_7_soir
         data_df.loc[13, 'Mesure 3 Systole'] = mesure_3_systole_jour_7_soir
-        data_df.loc[13, 'Mesure 3 Diastole'] = mesure_3_diastole_jour_7_soir   
+        data_df.loc[13, 'Mesure 3 Diastole'] = mesure_3_diastole_jour_7_soir  
+        
+        #Caching data
+        # Initialization
+        if 'dataframe' not in st.session_state:
+            st.session_state['dataframe'] = data_df
+        
+        # Update
+        st.session_state['dataframe'] = data_df
+            
+        st.session_state
         
         #calcul des moyennes
         #Moyenne systole jour 1
@@ -451,18 +461,14 @@ if page == 'Accueil - Suivi de la tension':
     }
         #draw chart
         st.write("")
-        st.write("Points des valeurs moyennes de la pression artérielle")
+        st.write("Graphique des valeurs moyennes de la pression artérielle")
         st.scatter_chart(chart_data, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
         
-        st.write("Points des valeurs moyennes de la pression artérielle sans la première mesure")
+        st.write("Graphique des valeurs moyennes de la pression artérielle sans la première mesure")
         st.scatter_chart(chart_data_without_first_measure, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
         
-        st.write("Points des valeurs moyennes de la pression artérielle sans les mesures du jour 1")
+        st.write("Graphique des valeurs moyennes de la pression artérielle sans les mesures du jour 1")
         st.scatter_chart(chart_data_without_measure_day_1, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
-        
-        # Initialization
-        if 'chart' not in st.session_state:
-            st.session_state['key'] = 'value'
     else:
         st.markdown("Soumettre le formulaire pour afficher les courbes des valeurs moyennes")
 
