@@ -28,167 +28,196 @@ if page == 'Accueil - Suivi de la tension':
     data_df = pd.DataFrame(data)
 
     with st.form('input_form'):
-        with st.expander("Mesures de tension artérielle Jour 1"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_1_matin = st.slider('Mesure 1 Systole Jour 1 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_1_matin = st.slider('Mesure 1 Diastole Jour 1 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_1_matin = st.slider('Mesure 2 Systole Jour 1 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_1_matin = st.slider('Mesure 2 Diastole Jour 1 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_1_matin = st.slider('Mesure 3 Systole Jour 1 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_1_matin = st.slider('Mesure 3 Diastole Jour 1 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_1_soir = st.slider('Mesure 1 Systole Jour 1 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_1_soir = st.slider('Mesure 1 Diastole Jour 1 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_1_soir = st.slider('Mesure 2 Systole Jour 1 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_1_soir = st.slider('Mesure 2 Diastole Jour 1 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_1_soir = st.slider('Mesure 3 Systole Jour 1 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_1_soir = st.slider('Mesure 3 Diastole Jour 1 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 2"):            
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_2_matin = st.slider('Mesure 1 Systole Jour 2 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_2_matin = st.slider('Mesure 1 Diastole Jour 2 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_2_matin = st.slider('Mesure 2 Systole Jour 2 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_2_matin = st.slider('Mesure 2 Diastole Jour 2 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_2_matin = st.slider('Mesure 3 Systole Jour 2 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_2_matin = st.slider('Mesure 3 Diastole Jour 2 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_2_soir = st.slider('Mesure 1 Systole Jour 2 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_2_soir = st.slider('Mesure 1 Diastole Jour 2 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_2_soir = st.slider('Mesure 2 Systole Jour 2 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_2_soir = st.slider('Mesure 2 Diastole Jour 2 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_2_soir = st.slider('Mesure 3 Systole Jour 2 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_2_soir = st.slider('Mesure 3 Diastole Jour 2 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 3"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_3_matin = st.slider('Mesure 1 Systole Jour 3 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_3_matin = st.slider('Mesure 1 Diastole Jour 3 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_3_matin = st.slider('Mesure 2 Systole Jour 3 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_3_matin = st.slider('Mesure 2 Diastole Jour 3 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_3_matin = st.slider('Mesure 3 Systole Jour 3 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_3_matin = st.slider('Mesure 3 Diastole Jour 3 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_3_soir = st.slider('Mesure 1 Systole Jour 3 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_3_soir = st.slider('Mesure 1 Diastole Jour 3 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_3_soir = st.slider('Mesure 2 Systole Jour 3 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_3_soir = st.slider('Mesure 2 Diastole Jour 3 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_3_soir = st.slider('Mesure 3 Systole Jour 3 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_3_soir = st.slider('Mesure 3 Diastole Jour 3 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 4"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_4_matin = st.slider('Mesure 1 Systole Jour 4 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_4_matin = st.slider('Mesure 1 Diastole Jour 4 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_4_matin = st.slider('Mesure 2 Systole Jour 4 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_4_matin = st.slider('Mesure 2 Diastole Jour 4 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_4_matin = st.slider('Mesure 3 Systole Jour 4 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_4_matin = st.slider('Mesure 3 Diastole Jour 4 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_4_soir = st.slider('Mesure 1 Systole Jour 4 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_4_soir = st.slider('Mesure 1 Diastole Jour 4 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_4_soir = st.slider('Mesure 2 Systole Jour 4 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_4_soir = st.slider('Mesure 2 Diastole Jour 4 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_4_soir = st.slider('Mesure 3 Systole Jour 4 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_4_soir = st.slider('Mesure 3 Diastole Jour 4 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 5"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_5_matin = st.slider('Mesure 1 Systole Jour 5 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_5_matin = st.slider('Mesure 1 Diastole Jour 5 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_5_matin = st.slider('Mesure 2 Systole Jour 5 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_5_matin = st.slider('Mesure 2 Diastole Jour 5 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_5_matin = st.slider('Mesure 3 Systole Jour 5 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_5_matin = st.slider('Mesure 3 Diastole Jour 5 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_5_soir = st.slider('Mesure 1 Systole Jour 5 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_5_soir = st.slider('Mesure 1 Diastole Jour 5 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_5_soir = st.slider('Mesure 2 Systole Jour 5 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_5_soir = st.slider('Mesure 2 Diastole Jour 5 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_5_soir = st.slider('Mesure 3 Systole Jour 5 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_5_soir = st.slider('Mesure 3 Diastole Jour 5 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 6"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_6_matin = st.slider('Mesure 1 Systole Jour 6 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_6_matin = st.slider('Mesure 1 Diastole Jour 6 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_6_matin = st.slider('Mesure 2 Systole Jour 6 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_6_matin = st.slider('Mesure 2 Diastole Jour 6 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_6_matin = st.slider('Mesure 3 Systole Jour 6 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_6_matin = st.slider('Mesure 3 Diastole Jour 6 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_6_soir = st.slider('Mesure 1 Systole Jour 6 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_6_soir = st.slider('Mesure 1 Diastole Jour 6 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_6_soir = st.slider('Mesure 2 Systole Jour 6 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_6_soir = st.slider('Mesure 2 Diastole Jour 6 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_6_soir = st.slider('Mesure 3 Systole Jour 6 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_6_soir = st.slider('Mesure 3 Diastole Jour 6 Soir', min_value=0, max_value=200)
-        with st.expander("Mesures de tension artérielle Jour 7"):
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_7_matin = st.slider('Mesure 1 Systole Jour 7 Matin', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_7_matin = st.slider('Mesure 1 Diastole Jour 7 Matin', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_7_matin = st.slider('Mesure 2 Systole Jour 7 Matin', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_7_matin = st.slider('Mesure 2 Diastole Jour 7 Matin', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_7_matin = st.slider('Mesure 3 Systole Jour 7 Matin', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_7_matin = st.slider('Mesure 3 Diastole Jour 7 Matin', min_value=0, max_value=200)
-            with st.container():
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    mesure_1_systole_jour_7_soir = st.slider('Mesure 1 Systole Jour 7 Soir', min_value=0, max_value=200)
-                    mesure_1_diastole_jour_7_soir = st.slider('Mesure 1 Diastole Jour 7 Soir', min_value=0, max_value=200)
-                with col2:
-                    mesure_2_systole_jour_7_soir = st.slider('Mesure 2 Systole Jour 7 Soir', min_value=0, max_value=200)
-                    mesure_2_diastole_jour_7_soir = st.slider('Mesure 2 Diastole Jour 7 Soir', min_value=0, max_value=200)
-                with col3:
-                    mesure_3_systole_jour_7_soir = st.slider('Mesure 3 Systole Jour 7 Soir', min_value=0, max_value=200)
-                    mesure_3_diastole_jour_7_soir = st.slider('Mesure 3 Diastole Jour 7 Soir', min_value=0, max_value=200)
+        tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Jour 1", "Jour 2", "Jour 3", "Jour 4", "Jour 5", "Jour 6", "Jour 7"])
+        with tab1:
+            tab_j_1_matin, tab_j_1_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 1"):
+                with tab_j_1_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_1_matin = st.slider('Mesure 1 Systole Jour 1 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_1_matin = st.slider('Mesure 1 Diastole Jour 1 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_1_matin = st.slider('Mesure 2 Systole Jour 1 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_1_matin = st.slider('Mesure 2 Diastole Jour 1 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_1_matin = st.slider('Mesure 3 Systole Jour 1 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_1_matin = st.slider('Mesure 3 Diastole Jour 1 Matin', min_value=0, max_value=200)
+                with tab_j_1_soir:            
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_1_soir = st.slider('Mesure 1 Systole Jour 1 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_1_soir = st.slider('Mesure 1 Diastole Jour 1 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_1_soir = st.slider('Mesure 2 Systole Jour 1 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_1_soir = st.slider('Mesure 2 Diastole Jour 1 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_1_soir = st.slider('Mesure 3 Systole Jour 1 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_1_soir = st.slider('Mesure 3 Diastole Jour 1 Soir', min_value=0, max_value=200)
+        with tab2:
+            tab_j_2_matin, tab_2_1_soir = st.tabs(['Matin', 'Soir'])    
+            with st.expander("Mesures de tension artérielle Jour 2"):
+                with tab_j_2_matin:            
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_2_matin = st.slider('Mesure 1 Systole Jour 2 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_2_matin = st.slider('Mesure 1 Diastole Jour 2 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_2_matin = st.slider('Mesure 2 Systole Jour 2 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_2_matin = st.slider('Mesure 2 Diastole Jour 2 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_2_matin = st.slider('Mesure 3 Systole Jour 2 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_2_matin = st.slider('Mesure 3 Diastole Jour 2 Matin', min_value=0, max_value=200)
+                with tab_2_1_soir:            
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_2_soir = st.slider('Mesure 1 Systole Jour 2 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_2_soir = st.slider('Mesure 1 Diastole Jour 2 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_2_soir = st.slider('Mesure 2 Systole Jour 2 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_2_soir = st.slider('Mesure 2 Diastole Jour 2 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_2_soir = st.slider('Mesure 3 Systole Jour 2 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_2_soir = st.slider('Mesure 3 Diastole Jour 2 Soir', min_value=0, max_value=200)
+        with tab3:
+            tab_j_3_matin, tab_j_3_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 3"):
+                with tab_j_3_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_3_matin = st.slider('Mesure 1 Systole Jour 3 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_3_matin = st.slider('Mesure 1 Diastole Jour 3 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_3_matin = st.slider('Mesure 2 Systole Jour 3 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_3_matin = st.slider('Mesure 2 Diastole Jour 3 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_3_matin = st.slider('Mesure 3 Systole Jour 3 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_3_matin = st.slider('Mesure 3 Diastole Jour 3 Matin', min_value=0, max_value=200)
+                with tab_j_3_soir:            
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_3_soir = st.slider('Mesure 1 Systole Jour 3 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_3_soir = st.slider('Mesure 1 Diastole Jour 3 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_3_soir = st.slider('Mesure 2 Systole Jour 3 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_3_soir = st.slider('Mesure 2 Diastole Jour 3 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_3_soir = st.slider('Mesure 3 Systole Jour 3 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_3_soir = st.slider('Mesure 3 Diastole Jour 3 Soir', min_value=0, max_value=200)
+        with tab4:
+            tab_j_4_matin, tab_j_4_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 4"):
+                with tab_j_4_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_4_matin = st.slider('Mesure 1 Systole Jour 4 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_4_matin = st.slider('Mesure 1 Diastole Jour 4 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_4_matin = st.slider('Mesure 2 Systole Jour 4 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_4_matin = st.slider('Mesure 2 Diastole Jour 4 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_4_matin = st.slider('Mesure 3 Systole Jour 4 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_4_matin = st.slider('Mesure 3 Diastole Jour 4 Matin', min_value=0, max_value=200)
+                with tab_j_4_soir:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_4_soir = st.slider('Mesure 1 Systole Jour 4 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_4_soir = st.slider('Mesure 1 Diastole Jour 4 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_4_soir = st.slider('Mesure 2 Systole Jour 4 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_4_soir = st.slider('Mesure 2 Diastole Jour 4 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_4_soir = st.slider('Mesure 3 Systole Jour 4 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_4_soir = st.slider('Mesure 3 Diastole Jour 4 Soir', min_value=0, max_value=200)
+        with tab5:
+            tab_j_5_matin, tab_j_5_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 5"):
+                with tab_j_5_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_5_matin = st.slider('Mesure 1 Systole Jour 5 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_5_matin = st.slider('Mesure 1 Diastole Jour 5 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_5_matin = st.slider('Mesure 2 Systole Jour 5 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_5_matin = st.slider('Mesure 2 Diastole Jour 5 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_5_matin = st.slider('Mesure 3 Systole Jour 5 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_5_matin = st.slider('Mesure 3 Diastole Jour 5 Matin', min_value=0, max_value=200)
+                with tab_j_5_soir:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_5_soir = st.slider('Mesure 1 Systole Jour 5 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_5_soir = st.slider('Mesure 1 Diastole Jour 5 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_5_soir = st.slider('Mesure 2 Systole Jour 5 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_5_soir = st.slider('Mesure 2 Diastole Jour 5 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_5_soir = st.slider('Mesure 3 Systole Jour 5 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_5_soir = st.slider('Mesure 3 Diastole Jour 5 Soir', min_value=0, max_value=200)
+        with tab6:
+            tab_j_6_matin, tab_j_6_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 6"):
+                with tab_j_6_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_6_matin = st.slider('Mesure 1 Systole Jour 6 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_6_matin = st.slider('Mesure 1 Diastole Jour 6 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_6_matin = st.slider('Mesure 2 Systole Jour 6 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_6_matin = st.slider('Mesure 2 Diastole Jour 6 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_6_matin = st.slider('Mesure 3 Systole Jour 6 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_6_matin = st.slider('Mesure 3 Diastole Jour 6 Matin', min_value=0, max_value=200)
+                with tab_j_6_soir:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_6_soir = st.slider('Mesure 1 Systole Jour 6 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_6_soir = st.slider('Mesure 1 Diastole Jour 6 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_6_soir = st.slider('Mesure 2 Systole Jour 6 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_6_soir = st.slider('Mesure 2 Diastole Jour 6 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_6_soir = st.slider('Mesure 3 Systole Jour 6 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_6_soir = st.slider('Mesure 3 Diastole Jour 6 Soir', min_value=0, max_value=200)
+        with tab7:
+            tab_j_7_matin, tab_j_7_soir = st.tabs(['Matin', 'Soir'])
+            with st.expander("Mesures de tension artérielle Jour 7"):
+                with tab_j_7_matin:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_7_matin = st.slider('Mesure 1 Systole Jour 7 Matin', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_7_matin = st.slider('Mesure 1 Diastole Jour 7 Matin', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_7_matin = st.slider('Mesure 2 Systole Jour 7 Matin', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_7_matin = st.slider('Mesure 2 Diastole Jour 7 Matin', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_7_matin = st.slider('Mesure 3 Systole Jour 7 Matin', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_7_matin = st.slider('Mesure 3 Diastole Jour 7 Matin', min_value=0, max_value=200)
+                with tab_j_7_soir:
+                    with st.container():
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                            mesure_1_systole_jour_7_soir = st.slider('Mesure 1 Systole Jour 7 Soir', min_value=0, max_value=200)
+                            mesure_1_diastole_jour_7_soir = st.slider('Mesure 1 Diastole Jour 7 Soir', min_value=0, max_value=200)
+                        with col2:
+                            mesure_2_systole_jour_7_soir = st.slider('Mesure 2 Systole Jour 7 Soir', min_value=0, max_value=200)
+                            mesure_2_diastole_jour_7_soir = st.slider('Mesure 2 Diastole Jour 7 Soir', min_value=0, max_value=200)
+                        with col3:
+                            mesure_3_systole_jour_7_soir = st.slider('Mesure 3 Systole Jour 7 Soir', min_value=0, max_value=200)
+                            mesure_3_diastole_jour_7_soir = st.slider('Mesure 3 Diastole Jour 7 Soir', min_value=0, max_value=200)
         clickSubmit = st.form_submit_button('Soumettre le formulaire')
 
     if clickSubmit:
@@ -442,7 +471,7 @@ Comprendre et gérer l'HTA est essentiel pour prévenir les complications graves
                   "En effet ! 17 millions de personnes souffrent d'hypertension en France", 
                   "Essaie encore !", "Afficher la réponse")
     
-    stb.single_choice("combien d'adultes sont touchés par l'hypertension ? ",
+    stb.single_choice("Combien d'adultes sont touchés par l'hypertension ? ",
                   ["1 adulte sur 3", "1 adulte sur 4", 
                   "1 adulte sur 2", "1 adulte sur 5"],
                   0,
