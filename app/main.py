@@ -3,6 +3,8 @@ import numpy as np
 import streamlit as st
 import streamlit_book as stb
 
+st.set_page_config(layout="wide")
+
 # Titre de l'application
 st.header('Suivi Tension Artérielle', divider=True)
 
