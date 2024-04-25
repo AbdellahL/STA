@@ -4,12 +4,10 @@ import streamlit as st
 import streamlit_book as stb
 
 # Titre de l'application
-st.title('Suivi Tension Artérielle')
-
-st.divider()  # 👈 Draws a horizontal rule
+st.header('Suivi Tension Artérielle', divider=True)
 
 # Créer une liste déroulante pour la navigation entre les pages
-page = st.sidebar.selectbox('Choisissez une page', ('Accueil - Suivi de la tension', 'Protocole et règle des 3'))
+page = st.sidebar.selectbox('Choisissez une page', ('Accueil - Suivi de la tension', 'Quiz'))
 
 if page == 'Accueil - Suivi de la tension':
     data = [{"Jour": 'Jour 1 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
@@ -406,26 +404,59 @@ if page == 'Accueil - Suivi de la tension':
     else:
         st.markdown("Soumettre le formulaire pour afficher les courbes des valeurs moyennes")
 
-elif page == 'Protocole et règle des 3':
-    stb.true_or_false("Test qcm 1, vrai ou faux", 
-                      False, 
-                      "commentaire si bonne réponse", 
-                      "commentaire si mauvaise réponse",
-                      "Afficher la réponse")
-    stb.single_choice("Test qcm 2, une seule réponse",
-                  ["option 1", "option 2", 
-                  "option 3", "option 4"],
-                  1,
-                  "commentaire si bonne réponse", 
-                  "commentaire si mauvaise réponse")
-    stb.multiple_choice("Test qcm 3, choix multiple",
-                    {"1":True,
-                     "2":False,
-                     "3":False,
-                     "4":False,
-                     "5":True,
-                     "6":True},
-                    "commentaire si bonne réponse", 
-                    "commentaire si mauvaise réponse"
-                   )
+elif page == 'Quiz':
 
+    st.subheader('Testez vos connaissances ', divider='red')
+
+    st.subheader("L'hypertension artérielle :anatomical_heart:")
+
+    intro = '''L'HTA est un problème courant mais souvent mal compris, touchant des millions de personnes à travers le monde. 
+         Elle se caractérise par une pression sanguine constamment élevée dans les vaisseaux.  
+  
+  **Pression artérielle** :
+    
+La pression artérielle, mesurée en deux valeurs (systolique et diastolique), est normalement en dessous de 120/80 mmHg. Au-delà de 140/90 mmHg, on parle généralement d'hypertension.
+
+**Causes et conséquences de l'hypertension** :
+
+Les causes incluent le mode de vie, l'hérédité, l'âge et d'autres facteurs comme l'obésité et le tabagisme.
+Les conséquences peuvent être graves, augmentant le risque de maladies cardiovasculaires, de problèmes rénaux et de troubles de la vision.
+
+**Gestion et traitement de l'HTA** :
+
+Heureusement, l'HTA peut souvent être maîtrisée par des changements de mode de vie et, si nécessaire, des médicaments prescrits par un médecin.
+
+**Conclusion et recommandations** :
+
+Comprendre et gérer l'HTA est essentiel pour prévenir les complications graves et maintenir une bonne santé cardiovasculaire. Avec un mode de vie sain et en suivant les conseils médicaux, il est possible de contrôler efficacement la pression artérielle et de réduire les risques associés à cette condition.
+    '''
+
+    st.markdown(intro)
+
+    st.divider()
+
+    stb.single_choice("Combien de personnes souffrent d'HTA en France ? ",
+                  ["5 Millions", "17 Millions", 
+                  "20 Millions", "10 Millions"],
+                  1,
+                  "En effet ! 17 millions de personnes souffrent d'hypertension en France", 
+                  "Essaie encore !", "Afficher la réponse")
+    
+    stb.single_choice("combien d'adultes sont touchés par l'hypertension ? ",
+                  ["1 adulte sur 3", "1 adulte sur 4", 
+                  "1 adulte sur 2", "1 adulte sur 5"],
+                  0,
+                  "En effet ! 1 adulte sur 3 souffre d'hypertension en France", 
+                  "Essaie encore !", "Afficher la réponse")
+    stb.true_or_false("L'hypertension artérielle est le premier motif de consultation en médecine générale", 
+                      True, 
+                      "Et oui, l'hypertension est le premier motif de consultation en médecine générale", 
+                      "Essaie encore !",
+                      "Afficher la réponse")
+    
+    stb.multiple_choice("L'hypertension artérielle est le premier motif de consultation en médecine générale", 
+                      {"Vrai":True,
+                     "Faux":False},
+                      "Et oui, l'hypertension est le premier motif de consultation en médecine générale", 
+                      "Essaie encore !",
+                      "Afficher la réponse")
