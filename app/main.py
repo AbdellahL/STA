@@ -347,6 +347,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_1_sans_premiere_mesure_soir = (data_df.loc[1, 'Mesure 2 Systole'] + data_df.loc[1, 'Mesure 3 Systole']) / 2
         else :
             moyenne_systole_jour_1 = 0
+            moyenne_systole_jour_1_sans_premiere_mesure = 0
             moyenne_systole_jour_1_matin = 0
             moyenne_systole_jour_1_soir = 0
             moyenne_systole_jour_1_sans_premiere_mesure_matin = 0
@@ -580,63 +581,74 @@ if page == 'Accueil - Suivi de la tension':
         liste_systole_globale = [i for i in chart_data['Systole'] if i != 0]
         if len(liste_systole_globale) != 0:
             moyenne_globale_systole = sum(liste_systole_globale) / len(liste_systole_globale)
-        
+        else : 
+            moyenne_globale_systole = 0
         #Calcul moyenne globale diastole
         liste_diastole_globale = [i for i in chart_data['Diastole'] if i != 0]
         if len(liste_diastole_globale) != 0:
             moyenne_globale_diastole = sum(liste_diastole_globale) / len(liste_diastole_globale)
-            
+        else : 
+            moyenne_globale_diastole = 0    
         #Calcul moyenne globale systole matin
         liste_systole_globale_matin = [i for i in [moyenne_systole_jour_1_matin, moyenne_systole_jour_2_matin, moyenne_systole_jour_3_matin, moyenne_systole_jour_4_matin, moyenne_systole_jour_5_matin, moyenne_systole_jour_6_matin, moyenne_systole_jour_7_matin] if i != 0]
         if len(liste_systole_globale_matin) != 0:
             moyenne_globale_systole_matin = sum(liste_systole_globale_matin) / len(liste_systole_globale_matin)
-        
+        else: 
+            moyenne_globale_systole_matin = 0
         #Calcul moyenne globale diastole matin
         liste_diastole_globale_matin = [i for i in [moyenne_diastole_jour_1_matin, moyenne_diastole_jour_2_matin, moyenne_diastole_jour_3_matin, moyenne_diastole_jour_4_matin, moyenne_diastole_jour_5_matin, moyenne_diastole_jour_6_matin, moyenne_diastole_jour_7_matin] if i != 0]
         if len(liste_diastole_globale_matin) != 0:
             moyenne_globale_diastole_matin = sum(liste_diastole_globale_matin) / len(liste_diastole_globale_matin)
-        
+        else:
+            moyenne_globale_diastole_matin = 0
         #Calcul moyenne globale systole soir
         liste_systole_globale_soir = [i for i in [moyenne_systole_jour_1_soir, moyenne_systole_jour_2_soir, moyenne_systole_jour_3_soir, moyenne_systole_jour_4_soir, moyenne_systole_jour_5_soir, moyenne_systole_jour_6_soir, moyenne_systole_jour_7_soir] if i != 0]
         if len(liste_systole_globale_soir) != 0:
             moyenne_globale_systole_soir = sum(liste_systole_globale_soir) / len(liste_systole_globale_soir)
-            
+        else: 
+            moyenne_globale_systole_soir = 0 
         #Calcul moyenne globale diastole soir
         liste_diastole_globale_soir = [i for i in [moyenne_diastole_jour_1_soir, moyenne_diastole_jour_2_soir, moyenne_diastole_jour_3_soir, moyenne_diastole_jour_4_soir, moyenne_diastole_jour_5_soir, moyenne_diastole_jour_6_soir, moyenne_diastole_jour_7_soir] if i != 0]
         if len(liste_diastole_globale_soir) != 0:
             moyenne_globale_diastole_soir = sum(liste_diastole_globale_soir) / len(liste_diastole_globale_soir)
-        
+        else:
+            moyenne_globale_diastole_soir = 0
         #Calcul moyenne globale systole sans la première mesure
         liste_systole_globale_sans_premiere_mesure = [i for i in [moyenne_systole_jour_1_sans_premiere_mesure, moyenne_systole_jour_2_sans_premiere_mesure, moyenne_systole_jour_3_sans_premiere_mesure, moyenne_systole_jour_4_sans_premiere_mesure, moyenne_systole_jour_5_sans_premiere_mesure, moyenne_systole_jour_6_sans_premiere_mesure, moyenne_systole_jour_7_sans_premiere_mesure] if i != 0] 
         if len(liste_systole_globale_sans_premiere_mesure) != 0:
             moyenne_globale_systole_sans_premiere_mesure = sum(liste_systole_globale_sans_premiere_mesure) / len(liste_systole_globale_sans_premiere_mesure)
-            
+        else:
+            moyenne_globale_systole_sans_premiere_mesure = 0
         #Calcul moyenne globale diastole sans la première mesure
         liste_diastole_globale_sans_premiere_mesure = [i for i in [moyenne_diastole_jour_1_sans_premiere_mesure, moyenne_diastole_jour_2_sans_premiere_mesure, moyenne_diastole_jour_3_sans_premiere_mesure, moyenne_diastole_jour_4_sans_premiere_mesure, moyenne_diastole_jour_5_sans_premiere_mesure, moyenne_diastole_jour_6_sans_premiere_mesure, moyenne_diastole_jour_7_sans_premiere_mesure] if i != 0]
         if len(liste_diastole_globale_sans_premiere_mesure) != 0:
             moyenne_globale_diastole_sans_premiere_mesure = sum(liste_diastole_globale_sans_premiere_mesure) / len(liste_diastole_globale_sans_premiere_mesure)
-        
+        else:
+            moyenne_globale_diastole_sans_premiere_mesure = 0
        #Calcul moyenne globale systole sans la première mesure matin
         liste_systole_globale_sans_premiere_mesure_matin = [i for i in [moyenne_systole_jour_1_sans_premiere_mesure_matin, moyenne_systole_jour_2_sans_premiere_mesure_matin, moyenne_systole_jour_3_sans_premiere_mesure_matin, moyenne_systole_jour_4_sans_premiere_mesure_matin, moyenne_systole_jour_5_sans_premiere_mesure_matin, moyenne_systole_jour_6_sans_premiere_mesure_matin, moyenne_systole_jour_7_sans_premiere_mesure_matin] if i != 0]
         if len(liste_systole_globale_sans_premiere_mesure_matin) != 0:
             moyenne_globale_systole_sans_premiere_mesure_matin = sum(liste_systole_globale_sans_premiere_mesure_matin) / len(liste_systole_globale_sans_premiere_mesure_matin)
-        
+        else:
+            moyenne_globale_systole_sans_premiere_mesure_matin = 0
         #Calcul moyenne globale diastole sans la première mesure matin
         liste_diastole_globale_sans_premiere_mesure_matin = [i for i in [moyenne_diastole_jour_1_sans_premiere_mesure_matin, moyenne_diastole_jour_2_sans_premiere_mesure_matin, moyenne_diastole_jour_3_sans_premiere_mesure_matin, moyenne_diastole_jour_4_sans_premiere_mesure_matin, moyenne_diastole_jour_5_sans_premiere_mesure_matin, moyenne_diastole_jour_6_sans_premiere_mesure_matin, moyenne_diastole_jour_7_sans_premiere_mesure_matin] if i != 0]
         if len(liste_diastole_globale_sans_premiere_mesure_matin) != 0:
             moyenne_globale_diastole_sans_premiere_mesure_matin = sum(liste_diastole_globale_sans_premiere_mesure_matin) / len(liste_diastole_globale_sans_premiere_mesure_matin)
-        
+        else:
+            moyenne_globale_diastole_sans_premiere_mesure_matin = 0
         #Calcul moyenne globale systole sans la première mesure soir
         liste_systole_globale_sans_premiere_mesure_soir = [i for i in [moyenne_systole_jour_1_sans_premiere_mesure_soir, moyenne_systole_jour_2_sans_premiere_mesure_soir, moyenne_systole_jour_3_sans_premiere_mesure_soir, moyenne_systole_jour_4_sans_premiere_mesure_soir, moyenne_systole_jour_5_sans_premiere_mesure_soir, moyenne_systole_jour_6_sans_premiere_mesure_soir, moyenne_systole_jour_7_sans_premiere_mesure_soir] if i != 0]
         if len(liste_systole_globale_sans_premiere_mesure_soir) != 0:
             moyenne_globale_systole_sans_premiere_mesure_soir = sum(liste_systole_globale_sans_premiere_mesure_soir) / len(liste_systole_globale_sans_premiere_mesure_soir)
-        
+        else:
+            moyenne_globale_systole_sans_premiere_mesure_soir = 0
         #Calcul moyenne globale diastole sans la première mesure soir
         liste_diastole_globale_sans_premiere_mesure_soir = [i for i in [moyenne_diastole_jour_1_sans_premiere_mesure_soir, moyenne_diastole_jour_2_sans_premiere_mesure_soir, moyenne_diastole_jour_3_sans_premiere_mesure_soir, moyenne_diastole_jour_4_sans_premiere_mesure_soir, moyenne_diastole_jour_5_sans_premiere_mesure_soir, moyenne_diastole_jour_6_sans_premiere_mesure_soir, moyenne_diastole_jour_7_sans_premiere_mesure_soir] if i != 0]
         if len(liste_diastole_globale_sans_premiere_mesure_soir) != 0:
             moyenne_globale_diastole_sans_premiere_mesure_soir = sum(liste_diastole_globale_sans_premiere_mesure_soir) / len(liste_diastole_globale_sans_premiere_mesure_soir)
-            
-        
+        else:
+            moyenne_globale_diastole_sans_premiere_mesure_soir = 0
         #Calcul moyenne globale systole sans les mesures du jour 1
         liste_systole_globale_sans_mesure_jour_1 = [i for i in chart_data_without_measure_day_1['Systole'] if i != 0]
         if len(liste_systole_globale_sans_mesure_jour_1) != 0:
