@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import streamlit_book as stb
+import matplotlib.pyplot as plt
+
 
 st.set_page_config(layout="wide")
 
@@ -372,7 +374,7 @@ if page == 'Accueil - Suivi de la tension':
             
         
         #Moyenne systole jour 2
-        if data_df.loc[2, 'Mesure 1 Systole'] != None and data_df.loc[2, 'Mesure 1 Systole'] != None and data_df.loc[2, 'Mesure 1 Systole'] != None and data_df.loc[3, 'Mesure 1 Systole'] != None and data_df.loc[3, 'Mesure 1 Systole'] != None and data_df.loc[3, 'Mesure 1 Systole'] != None:
+        if data_df.loc[2, 'Mesure 1 Systole'] != None and data_df.loc[2, 'Mesure 2 Systole'] != None and data_df.loc[2, 'Mesure 3 Systole'] != None and data_df.loc[3, 'Mesure 1 Systole'] != None and data_df.loc[3, 'Mesure 2 Systole'] != None and data_df.loc[3, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_2 = (data_df.loc[2, 'Mesure 1 Systole'] + data_df.loc[2, 'Mesure 2 Systole'] + data_df.loc[2, 'Mesure 3 Systole'] + data_df.loc[3, 'Mesure 1 Systole'] + data_df.loc[3, 'Mesure 2 Systole'] + data_df.loc[3, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_2_sans_premiere_mesure = (data_df.loc[2, 'Mesure 2 Systole'] + data_df.loc[2, 'Mesure 3 Systole'] + data_df.loc[3, 'Mesure 2 Systole'] + data_df.loc[3, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_2_matin = (data_df.loc[2, 'Mesure 1 Systole'] + data_df.loc[2, 'Mesure 2 Systole'] + data_df.loc[2, 'Mesure 3 Systole']) / 3
@@ -387,7 +389,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_2_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_2_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 2
-        if data_df.loc[2, 'Mesure 1 Diastole'] != None and data_df.loc[3, 'Mesure 1 Diastole'] != None and data_df.loc[3, 'Mesure 1 Diastole'] != None and data_df.loc[3, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[2, 'Mesure 1 Diastole'] != None and data_df.loc[2, 'Mesure 2 Diastole'] != None and data_df.loc[2, 'Mesure 3 Diastole'] != None and data_df.loc[3, 'Mesure 1 Diastole'] != None and data_df.loc[3, 'Mesure 2 Diastole'] != None and data_df.loc[3, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_2 = (data_df.loc[2, 'Mesure 1 Diastole'] + data_df.loc[2, 'Mesure 2 Diastole'] + data_df.loc[2, 'Mesure 3 Diastole'] + data_df.loc[3, 'Mesure 1 Diastole'] + data_df.loc[3, 'Mesure 2 Diastole'] + data_df.loc[3, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_2_sans_premiere_mesure = (data_df.loc[2, 'Mesure 2 Diastole'] + data_df.loc[2, 'Mesure 3 Diastole'] + data_df.loc[3, 'Mesure 2 Diastole'] + data_df.loc[3, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_2_matin = (data_df.loc[2, 'Mesure 1 Diastole'] + data_df.loc[2, 'Mesure 2 Diastole'] + data_df.loc[2, 'Mesure 3 Diastole']) / 3
@@ -402,7 +404,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_diastole_jour_2_sans_premiere_mesure_matin = 0
             moyenne_diastole_jour_2_sans_premiere_mesure_soir = 0
         #Moyenne systole jour 3
-        if data_df.loc[4, 'Mesure 1 Systole'] != None and data_df.loc[5, 'Mesure 1 Systole'] != None and data_df.loc[5, 'Mesure 1 Systole'] != None and data_df.loc[5, 'Mesure 1 Systole'] != None:
+        if data_df.loc[4, 'Mesure 1 Systole'] != None and data_df.loc[4, 'Mesure 2 Systole'] != None and data_df.loc[4, 'Mesure 3 Systole'] != None and data_df.loc[5, 'Mesure 1 Systole'] != None and data_df.loc[5, 'Mesure 2 Systole'] != None and data_df.loc[5, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_3 = (data_df.loc[4, 'Mesure 1 Systole'] + data_df.loc[4, 'Mesure 2 Systole'] + data_df.loc[4, 'Mesure 3 Systole'] + data_df.loc[5, 'Mesure 1 Systole'] + data_df.loc[5, 'Mesure 2 Systole'] + data_df.loc[5, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_3_sans_premiere_mesure = (data_df.loc[4, 'Mesure 2 Systole'] + data_df.loc[4, 'Mesure 3 Systole'] + data_df.loc[5, 'Mesure 2 Systole'] + data_df.loc[5, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_3_matin = (data_df.loc[4, 'Mesure 1 Systole'] + data_df.loc[4, 'Mesure 2 Systole'] + data_df.loc[4, 'Mesure 3 Systole']) / 3
@@ -418,7 +420,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_3_sans_premiere_mesure_soir = 0
         
         #Moyenne diastole jour 3
-        if data_df.loc[4, 'Mesure 1 Diastole'] != None and data_df.loc[5, 'Mesure 1 Diastole'] != None and data_df.loc[5, 'Mesure 1 Diastole'] != None and data_df.loc[5, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[4, 'Mesure 1 Diastole'] != None and data_df.loc[4, 'Mesure 2 Diastole'] != None and data_df.loc[4, 'Mesure 3 Diastole'] != None and data_df.loc[5, 'Mesure 1 Diastole'] != None and data_df.loc[5, 'Mesure 2 Diastole'] != None and data_df.loc[5, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_3 = (data_df.loc[4, 'Mesure 1 Diastole'] + data_df.loc[4, 'Mesure 2 Diastole'] + data_df.loc[4, 'Mesure 3 Diastole'] + data_df.loc[5, 'Mesure 1 Diastole'] + data_df.loc[5, 'Mesure 2 Diastole'] + data_df.loc[5, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_3_sans_premiere_mesure = (data_df.loc[4, 'Mesure 2 Diastole'] + data_df.loc[4, 'Mesure 3 Diastole'] + data_df.loc[5, 'Mesure 2 Diastole'] + data_df.loc[5, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_3_matin = (data_df.loc[4, 'Mesure 1 Diastole'] + data_df.loc[4, 'Mesure 2 Diastole'] + data_df.loc[4, 'Mesure 3 Diastole']) / 3
@@ -435,7 +437,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_diastole_jour_3_sans_premiere_mesure_soir = 0
         
         #Moyenne systole jour 4
-        if data_df.loc[6, 'Mesure 1 Systole'] != None and data_df.loc[7, 'Mesure 1 Systole'] != None and data_df.loc[7, 'Mesure 1 Systole'] != None and data_df.loc[7, 'Mesure 1 Systole'] != None:
+        if data_df.loc[6, 'Mesure 1 Systole'] != None and data_df.loc[6, 'Mesure 2 Systole'] != None and data_df.loc[6, 'Mesure 3 Systole'] != None and data_df.loc[7, 'Mesure 1 Systole'] != None and data_df.loc[7, 'Mesure 2 Systole'] != None and data_df.loc[7, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_4 = (data_df.loc[6, 'Mesure 1 Systole'] + data_df.loc[6, 'Mesure 2 Systole'] + data_df.loc[6, 'Mesure 3 Systole'] + data_df.loc[7, 'Mesure 1 Systole'] + data_df.loc[7, 'Mesure 2 Systole'] + data_df.loc[7, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_4_sans_premiere_mesure = (data_df.loc[6, 'Mesure 2 Systole'] + data_df.loc[6, 'Mesure 3 Systole'] + data_df.loc[7, 'Mesure 2 Systole'] + data_df.loc[7, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_4_matin = (data_df.loc[6, 'Mesure 1 Systole'] + data_df.loc[6, 'Mesure 2 Systole'] + data_df.loc[6, 'Mesure 3 Systole']) / 3
@@ -451,7 +453,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_4_sans_premiere_mesure_soir = 0
             
         #Moyenne diastole jour 4
-        if data_df.loc[6, 'Mesure 1 Diastole'] != None and data_df.loc[7, 'Mesure 1 Diastole'] != None and data_df.loc[7, 'Mesure 1 Diastole'] != None and data_df.loc[7, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[6, 'Mesure 1 Diastole'] != None and data_df.loc[6, 'Mesure 2 Diastole'] != None and data_df.loc[6, 'Mesure 3 Diastole'] != None and data_df.loc[7, 'Mesure 1 Diastole'] != None and data_df.loc[7, 'Mesure 2 Diastole'] != None and data_df.loc[7, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_4 = (data_df.loc[6, 'Mesure 1 Diastole'] + data_df.loc[6, 'Mesure 2 Diastole'] + data_df.loc[6, 'Mesure 3 Diastole'] + data_df.loc[7, 'Mesure 1 Diastole'] + data_df.loc[7, 'Mesure 2 Diastole'] + data_df.loc[7, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_4_sans_premiere_mesure = (data_df.loc[6, 'Mesure 2 Diastole'] + data_df.loc[6, 'Mesure 3 Diastole'] + data_df.loc[7, 'Mesure 2 Diastole'] + data_df.loc[7, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_4_matin = (data_df.loc[6, 'Mesure 1 Diastole'] + data_df.loc[6, 'Mesure 2 Diastole'] + data_df.loc[6, 'Mesure 3 Diastole']) / 3
@@ -467,7 +469,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_diastole_jour_4_sans_premiere_mesure_soir = 0
             
         #Moyenne systole jour 5
-        if data_df.loc[8, 'Mesure 1 Systole'] != None and data_df.loc[9, 'Mesure 1 Systole'] != None and data_df.loc[9, 'Mesure 1 Systole'] != None and data_df.loc[9, 'Mesure 1 Systole'] != None:
+        if data_df.loc[8, 'Mesure 1 Systole'] != None and data_df.loc[8, 'Mesure 2 Systole'] != None and data_df.loc[8, 'Mesure 3 Systole'] != None and data_df.loc[9, 'Mesure 1 Systole'] != None and data_df.loc[9, 'Mesure 2 Systole'] != None and data_df.loc[9, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_5 = (data_df.loc[8, 'Mesure 1 Systole'] + data_df.loc[8, 'Mesure 2 Systole'] + data_df.loc[8, 'Mesure 3 Systole'] + data_df.loc[9, 'Mesure 1 Systole'] + data_df.loc[9, 'Mesure 2 Systole'] + data_df.loc[9, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_5_sans_premiere_mesure = (data_df.loc[8, 'Mesure 2 Systole'] + data_df.loc[8, 'Mesure 3 Systole'] + data_df.loc[9, 'Mesure 2 Systole'] + data_df.loc[9, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_5_matin = (data_df.loc[8, 'Mesure 1 Systole'] + data_df.loc[8, 'Mesure 2 Systole'] + data_df.loc[8, 'Mesure 3 Systole']) / 3
@@ -483,7 +485,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_5_sans_premiere_mesure_soir = 0
         
         #Moyenne diastole jour 5
-        if data_df.loc[8, 'Mesure 1 Diastole'] != None and data_df.loc[9, 'Mesure 1 Diastole'] != None and data_df.loc[9, 'Mesure 1 Diastole'] != None and data_df.loc[9, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[8, 'Mesure 1 Diastole'] != None and data_df.loc[8, 'Mesure 2 Diastole'] != None and data_df.loc[8, 'Mesure 3 Diastole'] != None and data_df.loc[9, 'Mesure 1 Diastole'] != None and data_df.loc[9, 'Mesure 2 Diastole'] != None and data_df.loc[9, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_5 = (data_df.loc[8, 'Mesure 1 Diastole'] + data_df.loc[8, 'Mesure 2 Diastole'] + data_df.loc[8, 'Mesure 3 Diastole'] + data_df.loc[9, 'Mesure 1 Diastole'] + data_df.loc[9, 'Mesure 2 Diastole'] + data_df.loc[9, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_5_sans_premiere_mesure = (data_df.loc[8, 'Mesure 2 Diastole'] + data_df.loc[8, 'Mesure 3 Diastole'] + data_df.loc[9, 'Mesure 2 Diastole'] + data_df.loc[9, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_5_matin = (data_df.loc[8, 'Mesure 1 Diastole'] + data_df.loc[8, 'Mesure 2 Diastole'] + data_df.loc[8, 'Mesure 3 Diastole']) / 3
@@ -498,7 +500,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_diastole_jour_5_sans_premiere_mesure_matin = 0
             moyenne_diastole_jour_5_sans_premiere_mesure_soir = 0
         #Moyenne systole jour 6
-        if data_df.loc[10, 'Mesure 1 Systole'] != None and data_df.loc[11, 'Mesure 1 Systole'] != None and data_df.loc[11, 'Mesure 1 Systole'] != None and data_df.loc[11, 'Mesure 1 Systole'] != None:
+        if data_df.loc[10, 'Mesure 1 Systole'] != None and data_df.loc[10, 'Mesure 2 Systole'] != None and data_df.loc[10, 'Mesure 3 Systole'] != None and data_df.loc[11, 'Mesure 1 Systole'] != None and data_df.loc[11, 'Mesure 2 Systole'] != None and data_df.loc[11, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_6 = (data_df.loc[10, 'Mesure 1 Systole'] + data_df.loc[10, 'Mesure 2 Systole'] + data_df.loc[10, 'Mesure 3 Systole'] + data_df.loc[11, 'Mesure 1 Systole'] + data_df.loc[11, 'Mesure 2 Systole'] + data_df.loc[11, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_6_sans_premiere_mesure = (data_df.loc[10, 'Mesure 2 Systole'] + data_df.loc[10, 'Mesure 3 Systole'] + data_df.loc[11, 'Mesure 2 Systole'] + data_df.loc[11, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_6_matin = (data_df.loc[10, 'Mesure 1 Systole'] + data_df.loc[10, 'Mesure 2 Systole'] + data_df.loc[10, 'Mesure 3 Systole']) / 3
@@ -513,7 +515,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_6_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_6_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 6
-        if data_df.loc[10, 'Mesure 1 Diastole'] != None and data_df.loc[11, 'Mesure 1 Diastole'] != None and data_df.loc[11, 'Mesure 1 Diastole'] != None and data_df.loc[11, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[10, 'Mesure 1 Diastole'] != None and data_df.loc[10, 'Mesure 2 Diastole'] != None and data_df.loc[10, 'Mesure 3 Diastole'] != None and data_df.loc[11, 'Mesure 1 Diastole'] != None and data_df.loc[11, 'Mesure 2 Diastole'] != None and data_df.loc[11, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_6 = (data_df.loc[10, 'Mesure 1 Diastole'] + data_df.loc[10, 'Mesure 2 Diastole'] + data_df.loc[10, 'Mesure 3 Diastole'] + data_df.loc[11, 'Mesure 1 Diastole'] + data_df.loc[11, 'Mesure 2 Diastole'] + data_df.loc[11, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_6_sans_premiere_mesure = (data_df.loc[10, 'Mesure 2 Diastole'] + data_df.loc[10, 'Mesure 3 Diastole'] + data_df.loc[11, 'Mesure 2 Diastole'] + data_df.loc[11, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_6_matin = (data_df.loc[10, 'Mesure 1 Diastole'] + data_df.loc[10, 'Mesure 2 Diastole'] + data_df.loc[10, 'Mesure 3 Diastole']) / 3
@@ -529,7 +531,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_diastole_jour_6_sans_premiere_mesure_soir = 0
         
         #Moyenne systole jour 7
-        if data_df.loc[12, 'Mesure 1 Systole'] != None and data_df.loc[13, 'Mesure 1 Systole'] != None and data_df.loc[13, 'Mesure 1 Systole'] != None and data_df.loc[13, 'Mesure 1 Systole'] != None:
+        if data_df.loc[12, 'Mesure 1 Systole'] != None and data_df.loc[12, 'Mesure 2 Systole'] != None and data_df.loc[12, 'Mesure 3 Systole'] != None and data_df.loc[13, 'Mesure 1 Systole'] != None and data_df.loc[13, 'Mesure 2 Systole'] != None and data_df.loc[13, 'Mesure 3 Systole'] != None:
             moyenne_systole_jour_7 = (data_df.loc[12, 'Mesure 1 Systole'] + data_df.loc[12, 'Mesure 2 Systole'] + data_df.loc[12, 'Mesure 3 Systole'] + data_df.loc[13, 'Mesure 1 Systole'] + data_df.loc[13, 'Mesure 2 Systole'] + data_df.loc[13, 'Mesure 3 Systole']) / 6
             moyenne_systole_jour_7_sans_premiere_mesure = (data_df.loc[12, 'Mesure 2 Systole'] + data_df.loc[12, 'Mesure 3 Systole'] + data_df.loc[13, 'Mesure 2 Systole'] + data_df.loc[13, 'Mesure 3 Systole']) / 4
             moyenne_systole_jour_7_matin = (data_df.loc[12, 'Mesure 1 Systole'] + data_df.loc[12, 'Mesure 2 Systole'] + data_df.loc[12, 'Mesure 3 Systole']) / 3
@@ -544,7 +546,7 @@ if page == 'Accueil - Suivi de la tension':
             moyenne_systole_jour_7_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_7_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 7
-        if data_df.loc[12, 'Mesure 1 Diastole'] != None and data_df.loc[13, 'Mesure 1 Diastole'] != None and data_df.loc[13, 'Mesure 1 Diastole'] != None and data_df.loc[13, 'Mesure 1 Diastole'] != None:
+        if data_df.loc[12, 'Mesure 1 Diastole'] != None and data_df.loc[12, 'Mesure 2 Diastole'] != None and data_df.loc[12, 'Mesure 3 Diastole'] != None and data_df.loc[13, 'Mesure 1 Diastole'] != None and data_df.loc[13, 'Mesure 2 Diastole'] != None and data_df.loc[13, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_7 = (data_df.loc[12, 'Mesure 1 Diastole'] + data_df.loc[12, 'Mesure 2 Diastole'] + data_df.loc[12, 'Mesure 3 Diastole'] + data_df.loc[13, 'Mesure 1 Diastole'] + data_df.loc[13, 'Mesure 2 Diastole'] + data_df.loc[13, 'Mesure 3 Diastole']) / 6
             moyenne_diastole_jour_7_sans_premiere_mesure = (data_df.loc[12, 'Mesure 2 Diastole'] + data_df.loc[12, 'Mesure 3 Diastole'] + data_df.loc[13, 'Mesure 2 Diastole'] + data_df.loc[13, 'Mesure 3 Diastole']) / 4
             moyenne_diastole_jour_7_matin = (data_df.loc[12, 'Mesure 1 Diastole'] + data_df.loc[12, 'Mesure 2 Diastole'] + data_df.loc[12, 'Mesure 3 Diastole']) / 3
@@ -567,6 +569,7 @@ if page == 'Accueil - Suivi de la tension':
         'seuil_systole' : [135, 135, 135, 135, 135, 135, 135],
         'seuil_diastole' : [85, 85, 85, 85, 85, 85, 85]
     }   
+        
         chart_data_without_first_measure = {
         'Jour' : ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
         'Systole' : [moyenne_systole_jour_1_sans_premiere_mesure, moyenne_systole_jour_2_sans_premiere_mesure, moyenne_systole_jour_3_sans_premiere_mesure, moyenne_systole_jour_4_sans_premiere_mesure, moyenne_systole_jour_5_sans_premiere_mesure, moyenne_systole_jour_6_sans_premiere_mesure, moyenne_systole_jour_7_sans_premiere_mesure],
@@ -577,6 +580,35 @@ if page == 'Accueil - Suivi de la tension':
         'Systole' : [moyenne_systole_jour_2, moyenne_systole_jour_3, moyenne_systole_jour_4, moyenne_systole_jour_5, moyenne_systole_jour_6, moyenne_systole_jour_7],
         'Diastole' : [moyenne_diastole_jour_2, moyenne_diastole_jour_3, moyenne_diastole_jour_4, moyenne_diastole_jour_5, moyenne_diastole_jour_6, moyenne_diastole_jour_7],
     }   
+        line_systole = pd.DataFrame(
+            {
+                'Jour' : ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
+                'Systole' : [135, 135, 135, 135, 135, 135, 135]
+            }
+        )
+        
+        line_diastole = pd.DataFrame(
+            {
+                'Jour' : ['Jour 1', 'Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
+                'Diastole' : [85, 85, 85, 85, 85, 85, 85]
+            }
+        )
+        
+        line_systole_without_first_measure = pd.DataFrame(
+            {
+                'Jour' : ['Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
+                'Systole' : [135, 135, 135, 135, 135, 135]
+            }
+        )
+        
+        line_diastole_without_first_measure = pd.DataFrame(
+            {
+                'Jour' : ['Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
+                'Diastole' : [85, 85, 85, 85, 85, 85]
+            }
+        )
+        
+        
         #Calcul moyenne globale systole
         liste_systole_globale = [i for i in chart_data['Systole'] if i != 0]
         if len(liste_systole_globale) != 0:
@@ -664,21 +696,43 @@ if page == 'Accueil - Suivi de la tension':
         
         #draw chart
         st.write("")
-        
-        st.write("Graphique des valeurs moyennes de la pression artérielle")
-        st.scatter_chart(chart_data, x='Jour', y=['Systole', 'Diastole', 'seuil_systole', 'seuil_diastole'], color=['#F90000', '#0095F9', '#F90000', '#0095F9'])
+        fig, ax = plt.subplots()
+        ax.scatter(chart_data['Jour'], chart_data['Systole'], label='Systole', color='#F90000')
+        ax.scatter(chart_data['Jour'], chart_data['Diastole'], label='Diastole', color='#0095F9')
+        ax.plot(line_systole['Jour'], line_systole['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
+        ax.plot(line_diastole['Jour'], line_diastole['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
+        ax.set_xlabel('Jour')
+        ax.set_ylabel('Pression artérielle (mmHg)')
+        ax.set_title('Valeurs moyennes de la pression artérielle')
+        ax.legend()
+        st.pyplot(fig)
         st.write("Moyenne globale : ", moyenne_globale_systole, "/", moyenne_globale_diastole, " mmHg", ";", "Moyenne globale matin : ", moyenne_globale_systole_matin, "/", moyenne_globale_diastole_matin, " mmHg", ";", "Moyenne globale soir : ", moyenne_globale_systole_soir, "/", moyenne_globale_diastole_soir, " mmHg")
         
-        st.write("Graphique des valeurs moyennes de la pression artérielle sans la première mesure")
-        st.scatter_chart(chart_data_without_first_measure, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
-        st.write("Moyenne globale sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure, "/", moyenne_globale_diastole_sans_premiere_mesure, " mmHg", ";", "Moyenne globale matin sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure_matin, "/", moyenne_globale_diastole_sans_premiere_mesure_matin, " mmHg", ";", "Moyenne globale soir sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure_soir, "/", moyenne_globale_diastole_sans_premiere_mesure_soir, " mmHg")
+        fig, ax = plt.subplots()
+        ax.scatter(chart_data_without_first_measure['Jour'], chart_data_without_first_measure['Systole'], label='Systole', color='#F90000')
+        ax.scatter(chart_data_without_first_measure['Jour'], chart_data_without_first_measure['Diastole'], label='Diastole', color='#0095F9')
+        ax.plot(line_systole['Jour'], line_systole['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
+        ax.plot(line_diastole['Jour'], line_diastole['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
+        ax.set_xlabel('Jour')
+        ax.set_ylabel('Pression artérielle (mmHg)')
+        ax.set_title('Valeurs moyennes de la pression artérielle sans la première mesure')
+        ax.legend()
+        st.pyplot(fig)
         
         st.write("Graphique des valeurs moyennes de la pression artérielle sans les mesures du jour 1")
-        st.scatter_chart(chart_data_without_measure_day_1, x='Jour', y=['Systole', 'Diastole'], color=['#F90000', '#0095F9'])
-        st.write("Moyenne globale sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg", ";", "Moyenne globale matin sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg", ";", "Moyenne globale soir sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg")
-    
+        fig, ax = plt.subplots()
+        ax.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Systole'], label='Systole', color='#F90000')
+        ax.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Diastole'], label='Diastole', color='#0095F9')
+        ax.plot(line_systole_without_first_measure['Jour'], line_systole_without_first_measure['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
+        ax.plot(line_diastole_without_first_measure['Jour'], line_diastole_without_first_measure['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
+        ax.set_xlabel('Jour')
+        ax.set_ylabel('Pression artérielle (mmHg)')
+        ax.set_title('Valeurs moyennes de la pression artérielle sans les mesures du jour 1')
+        ax.legend()
+        st.pyplot(fig)
+        
     else:
-        st.markdown("Soumettre le formulaire pour afficher les courbes des valeurs moyennes")
+        st.markdown("Une fois les valeurs complétée, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes")
 
 elif page == 'Quiz':
 
