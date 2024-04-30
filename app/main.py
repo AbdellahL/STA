@@ -718,8 +718,8 @@ if page == 'Accueil - Suivi de la tension':
         ax.set_title('Valeurs moyennes de la pression artérielle sans la première mesure')
         ax.legend()
         st.pyplot(fig)
+        st.write("Moyenne globale sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure, "/", moyenne_globale_diastole_sans_premiere_mesure, " mmHg", ";", "Moyenne globale matin sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure_matin, "/", moyenne_globale_diastole_sans_premiere_mesure_matin, " mmHg", ";", "Moyenne globale soir sans la première mesure : ", moyenne_globale_systole_sans_premiere_mesure_soir, "/", moyenne_globale_diastole_sans_premiere_mesure_soir, " mmHg")
         
-        st.write("Graphique des valeurs moyennes de la pression artérielle sans les mesures du jour 1")
         fig, ax = plt.subplots()
         ax.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Systole'], label='Systole', color='#F90000')
         ax.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Diastole'], label='Diastole', color='#0095F9')
@@ -730,6 +730,7 @@ if page == 'Accueil - Suivi de la tension':
         ax.set_title('Valeurs moyennes de la pression artérielle sans les mesures du jour 1')
         ax.legend()
         st.pyplot(fig)
+        st.write("Moyenne globale sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg", ";", "Moyenne globale matin sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg", ";", "Moyenne globale soir sans les mesures du jour 1 : ", moyenne_globale_systole_sans_mesure_jour_1, "/", moyenne_globale_diastole_sans_mesure_jour_1, " mmHg")
         
     else:
         st.markdown("Une fois les valeurs complétée, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes")
