@@ -42,10 +42,10 @@ with st.form('input_form'):
         col1, col2 = st.columns(2)
         with col1:
             st.text_input("Nom")
-            st.text_input("Prénom")
+            st.number_input("Taille en cm", value=None, step=1, min_value=100, max_value=300)
             st.date_input(label='Date de naissance' ,value=None, min_value=None, max_value=None, key=None, format='DD/MM/YYYY')
         with col2:    
-            st.number_input("Taille en cm", value=None, step=1, min_value=100, max_value=300) 
+            st.text_input("Prénom") 
             st.number_input("Poids en kg", value=None, step=1, min_value=30, max_value=300)
             st.radio("Sexe", ["Homme", "Femme"])
         st.text_area("Traitement")
