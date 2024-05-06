@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import streamlit_book as stb
 import matplotlib.pyplot as plt
 
 
@@ -766,28 +765,6 @@ Comprendre et gérer l'HTA est essentiel pour prévenir les complications graves
 
     st.divider()
 
-    stb.single_choice("Combien de personnes souffrent d'HTA en France ? ",
-                  ["5 Millions", "17 Millions", 
-                  "20 Millions", "10 Millions"],
-                  1,
-                  "En effet ! 17 millions de personnes souffrent d'hypertension en France", 
-                  "Essaie encore !", "Afficher la réponse")
-    
-    stb.single_choice("Combien d'adultes sont touchés par l'hypertension ? ",
-                  ["1 adulte sur 3", "1 adulte sur 4", 
-                  "1 adulte sur 2", "1 adulte sur 5"],
-                  0,
-                  "En effet ! 1 adulte sur 3 souffre d'hypertension en France", 
-                  "Essaie encore !", "Afficher la réponse")
-    stb.true_or_false("L'hypertension artérielle est le premier motif de consultation en médecine générale", 
-                      True, 
-                      "Et oui, l'hypertension est le premier motif de consultation en médecine générale", 
-                      "Essaie encore !",
-                      "Afficher la réponse")
-    
-    stb.multiple_choice("L'hypertension artérielle est le premier motif de consultation en médecine générale", 
-                      {"Vrai":True,
-                     "Faux":False},
-                      "Et oui, l'hypertension est le premier motif de consultation en médecine générale", 
-                      "Essaie encore !",
-                      "Afficher la réponse")
+    link_to_quiz = '[Cliquez ici pour commencer le quiz](https://forms.gle/7Q7Q7Q7Q7Q7Q7Q7Q7)'
+
+    st.markdown(link_to_quiz, unsafe_allow_html=True)
