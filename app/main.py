@@ -37,47 +37,62 @@ data = [{"Jour": 'Jour 1 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": 
 data_df = pd.DataFrame(data)
 
 with st.form('input_form'):
-    with st.expander("Tableau de valeurs"):
-        edited_df = st.data_editor(data_df, num_rows="fixed", 
-                                   column_config={
-                                   "Mesure 1 Systole": st.column_config.NumberColumn(
-                                        help="Valeur de la première mesure de la tension artérielle systolique",
-                                        min_value=60,
-                                        max_value=300,
-                                        step=1,
-                                        default=None),
-                                    "Mesure 1 Diastole": st.column_config.NumberColumn(
-                                        help="Valeur de la première mesure de la tension artérielle diastolique",
-                                        min_value=40,
-                                        max_value=140,
-                                        step=1,
-                                        default=None), 
-                                    "Mesure 2 Systole": st.column_config.NumberColumn(
-                                        help="Valeur de la deuxième mesure de la tension artérielle systolique",
-                                        min_value=60,
-                                        max_value=300,
-                                        step=1,
-                                        default=None), 
-                                    "Mesure 2 Diastole": st.column_config.NumberColumn(
-                                        help="Valeur de la deuxième mesure de la tension artérielle diastolique",
-                                        min_value=40,
-                                        max_value=140,
-                                        step=1,
-                                        default=None), 
-                                    "Mesure 3 Systole": st.column_config.NumberColumn(
-                                        help="Valeur de la troisième mesure de la tension artérielle systolique",
-                                        min_value=60,
-                                        max_value=300,
-                                        step=1,
-                                        default=None), 
-                                    "Mesure 3 Diastole": st.column_config.NumberColumn(
-                                        help="Valeur de la troisième mesure de la tension artérielle diastolique",
-                                        min_value=40,
-                                        max_value=140,
-                                        step=1,
-                                        default=None)},
-                                   hide_index=True)
-        submitted = st.form_submit_button("Submit")
+    st.write("Veuillez remplir les informations suivantes ainsi que les valeurs de tension artérielle")
+    with st.expander("Informations du patient"):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.text_input("Nom")
+            st.text_input("Prénom")
+            st.date_input(label='Date de naissance' ,value=None, min_value=None, max_value=None, key=None, format='DD/MM/YYYY')
+        with col2:    
+            st.number_input("Taille en cm", value=None, step=1, min_value=100, max_value=300) 
+            st.number_input("Poids en kg", value=None, step=1, min_value=30, max_value=300)
+            st.radio("Sexe", ["Homme", "Femme"])
+        st.text_area("Traitement")
+    with st.expander("Mesures de tension artérielle"):
+        with st.container(height=550, border=False):            
+            edited_df = st.data_editor(data_df, use_container_width=True, height=525,
+                                        num_rows="fixed", 
+                                        column_config={
+                                        "Mesure 1 Systole": st.column_config.NumberColumn(
+                                                help="Valeur de la première mesure de la tension artérielle systolique",
+                                                min_value=60,
+                                                max_value=300,
+                                                step=1,
+                                                default=None),
+                                            "Mesure 1 Diastole": st.column_config.NumberColumn(
+                                                help="Valeur de la première mesure de la tension artérielle diastolique",
+                                                min_value=40,
+                                                max_value=140,
+                                                step=1,
+                                                default=None), 
+                                            "Mesure 2 Systole": st.column_config.NumberColumn(
+                                                help="Valeur de la deuxième mesure de la tension artérielle systolique",
+                                                min_value=60,
+                                                max_value=300,
+                                                step=1,
+                                                default=None), 
+                                            "Mesure 2 Diastole": st.column_config.NumberColumn(
+                                                help="Valeur de la deuxième mesure de la tension artérielle diastolique",
+                                                min_value=40,
+                                                max_value=140,
+                                                step=1,
+                                                default=None), 
+                                            "Mesure 3 Systole": st.column_config.NumberColumn(
+                                                help="Valeur de la troisième mesure de la tension artérielle systolique",
+                                                min_value=60,
+                                                max_value=300,
+                                                step=1,
+                                                default=None), 
+                                            "Mesure 3 Diastole": st.column_config.NumberColumn(
+                                                help="Valeur de la troisième mesure de la tension artérielle diastolique",
+                                                min_value=40,
+                                                max_value=140,
+                                                step=1,
+                                                default=None)},
+                                        hide_index=True)
+    submitted = st.form_submit_button("Soumettre le formulaire")
+    
     if submitted:
         #st.write("Edited dataframe:", edited_df)
     
@@ -98,8 +113,6 @@ with st.form('input_form'):
             moyenne_systole_jour_1_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_1_sans_premiere_mesure_soir = 0
             
-        st.write(edited_df.loc[0, 'Mesure 1 Systole'])
-        st.write("Moyenne systole jour 1 : ", moyenne_systole_jour_1)
         #Moyenne diastole jour 1
         if edited_df.loc[0, 'Mesure 1 Diastole'] != None and edited_df.loc[0, 'Mesure 2 Diastole'] != None and edited_df.loc[0, 'Mesure 3 Diastole'] != None and edited_df.loc[1, 'Mesure 1 Diastole'] != None and edited_df.loc[1, 'Mesure 2 Diastole'] != None and edited_df.loc[1, 'Mesure 3 Diastole'] != None:
             moyenne_diastole_jour_1 = (edited_df.loc[0, 'Mesure 1 Diastole'] + edited_df.loc[0, 'Mesure 2 Diastole'] + edited_df.loc[0, 'Mesure 3 Diastole'] + edited_df.loc[1, 'Mesure 1 Diastole'] + edited_df.loc[1, 'Mesure 2 Diastole'] + edited_df.loc[1, 'Mesure 3 Diastole']) / 6
@@ -510,4 +523,4 @@ with st.form('input_form'):
         # st.markdown(html, unsafe_allow_html=True)
         
     else:
-        st.markdown("Une fois les valeurs complétée, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes")
+        st.markdown("Une fois les valeurs complétée, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes et générer le compte-rendu.")
