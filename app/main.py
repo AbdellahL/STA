@@ -9,9 +9,9 @@ from PIL import Image
 import base64
 import tempfile
 
-# def create_download_link(val, filename):
-#     b64 = base64.b64encode(val)  # val looks like b'...'
-#     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
+def create_download_link(val, filename):
+    b64 = base64.b64encode(val)  # val looks like b'...'
+    return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Télécharger le Compte-Rendu</a>'
         
 
 st.set_page_config(layout="wide")
@@ -48,7 +48,7 @@ with st.form('input_form'):
             st.text_input("Prénom") 
             st.number_input("Poids en kg", value=None, step=1, min_value=30, max_value=300)
             st.radio("Sexe", ["Homme", "Femme"])
-        st.text_area("Traitement")
+        st.text_area("Traitement pour la tension arterielle", value='', height=None, max_chars=None, key=None, help="Laisser vide si aucun traitement")
     with st.expander("Mesures de tension artérielle"):
         with st.container(height=550, border=False):            
             edited_df = st.data_editor(data_df, use_container_width=True, height=525,
@@ -94,8 +94,6 @@ with st.form('input_form'):
     submitted = st.form_submit_button("Soumettre le formulaire")
     
     if submitted:
-        #st.write("Edited dataframe:", edited_df)
-    
         #calcul des moyennes
         #Moyenne systole jour 1
         if edited_df.loc[0, 'Mesure 1 Systole'] != None and edited_df.loc[0, 'Mesure 2 Systole'] != None and edited_df.loc[0, 'Mesure 3 Systole'] != None and edited_df.loc[1, 'Mesure 1 Systole'] != None and edited_df.loc[1, 'Mesure 2 Systole'] != None and edited_df.loc[1, 'Mesure 3 Systole'] != None:
@@ -484,12 +482,14 @@ with st.form('input_form'):
         ax3.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Diastole'], label='Diastole', color='#0095F9')
         ax3.plot(line_systole_without_first_measure['Jour'], line_systole_without_first_measure['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
         ax3.plot(line_diastole_without_first_measure['Jour'], line_diastole_without_first_measure['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
-        ax3.set_xlabel("Moyenne globale sans les mesures du jour 1 : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(moyenne_globale_diastole_sans_mesure_jour_1) + " mmHg" + ";"+"Moyenne globale matin sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/" + str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg" +";"+ "Moyenne globale soir sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/"+ str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg")
+        # ax3.set_xlabel("Moyenne globale sans les mesures du jour 1 : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(moyenne_globale_diastole_sans_mesure_jour_1) + " mmHg" + "\n"
+        #                +"Moyenne globale matin sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/" + str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg" +"\n"+ 
+        #                "Moyenne globale soir sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/"+ str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg")
         ax3.set_ylabel('Pression artérielle (mmHg)')
         ax3.set_title('Valeurs moyennes de la pression artérielle sans les mesures du jour 1')
         ax3.legend()
-        #with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
-            #plt.savefig(tmpfile.name, format="png")
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
+            plt.savefig(tmpfile.name, format="png")
 
         #plt.ylabel('Pression artérielle (mmHg)')
         st.pyplot(fig)
@@ -498,29 +498,31 @@ with st.form('input_form'):
         st.write("Moyenne globale sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure), "/", round(moyenne_globale_diastole_sans_premiere_mesure), " mmHg", ";", "Moyenne globale matin sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure_matin), "/", round(moyenne_globale_diastole_sans_premiere_mesure_matin), " mmHg", ";", "Moyenne globale soir sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure_soir), "/", round(moyenne_globale_diastole_sans_premiere_mesure_soir), " mmHg")
         st.write("Moyenne globale sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg", ";", "Moyenne globale matin sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg", ";", "Moyenne globale soir sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg")
         
-        #PDF
-        # pdf = FPDF()
-        # pdf.add_page()
-        # pdf.image(tmpfile.name, h=pdf.eph, w=pdf.epw)
-        # pdf.add_page()
-        # pdf.set_font("Times", size=10)
-        # with pdf.table(
-        #     borders_layout="MINIMAL",
-        #     cell_fill_color=200,  # grey
-        #     cell_fill_mode="ROWS",
-        #     line_height=pdf.font_size * 2.5,
-        #     text_align="CENTER",
-        #     width=160,
-        # ) as table:
-        #     for data_row in DATA:
-        #         row = table.row()
-        #         for datum in data_row:
-        #             row.cell(datum)
-        # pdf.output("table_from_pandas.pdf")
+        COLUMNS = [list(edited_df)]  # Get list of dataframe columns
+        ROWS = edited_df.values.tolist()  # Get list of dataframe rows
+        DATA = COLUMNS + ROWS  # Combine columns and rows in one list
         
-        # html = create_download_link(pdf.output(dest="S"), "test")
+        ##PDF
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Times", size=10)
+        with pdf.table(
+            borders_layout="MINIMAL",
+            align="CENTER",
+            cell_fill_color=200,  # grey
+            cell_fill_mode="ROWS",
+            line_height=pdf.font_size,
+            text_align="CENTER",
+            width=160,
+        ) as table:
+            for data_row in DATA:
+                row = table.row()
+                for datum in data_row:
+                    row.cell(str(datum))
+        pdf.image(tmpfile.name, h=pdf.eph/1.5, w=pdf.epw/1.5, x=pdf.epw/4, y=pdf.eph/4)
+        html = create_download_link(pdf.output(dest="S"), "compte-rendu-automesure")
 
-        # st.markdown(html, unsafe_allow_html=True)
+        st.markdown(html, unsafe_allow_html=True)
         
     else:
         st.markdown("Une fois les valeurs complétée, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes et générer le compte-rendu.")
