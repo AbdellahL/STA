@@ -521,7 +521,7 @@ with st.form('input_form'):
             pdf.text(120, 12, "Poids : " + " " + "Taille : " + " " + "IMC : ")
         pdf.set_font("Times", size=10)
         pdf.set_xy(14, 15)
-        pdf.cell(w=pdf.epw/1.8, h=pdf.eph/98, text='Traitement : ' + traitement, border=True)
+        pdf.cell(w=pdf.epw/1.8, h=pdf.eph/98, text='Traitement : ' + traitement, border=False)
         pdf.set_xy(15, 20)
         pdf.set_font("Times", size=10)
         with pdf.table(
