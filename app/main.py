@@ -8,16 +8,17 @@ from matplotlib.figure import Figure
 from PIL import Image
 import base64
 import tempfile
+from datetime import datetime, date
 
 def create_download_link(val, filename):
     b64 = base64.b64encode(val)  # val looks like b'...'
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Télécharger le Compte-Rendu</a>'
         
 
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 # Titre de l'application
-st.header('Suivi Tension Artérielle [En cours de développement]', divider=True)
+st.header('Suivi Tension Artérielle', divider=True)
 
 data = [{"Jour": 'Jour 1 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
             {"Jour": 'Jour 1 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
@@ -39,21 +40,20 @@ data_df = pd.DataFrame(data)
 with st.form('input_form'):
     st.write("Veuillez remplir les informations suivantes ainsi que les valeurs de tension artérielle")
     with st.expander("Informations du patient"):
-        col1, col2 = st.columns(2)
-        with col1:
-            st.text_input("Nom")
-            st.number_input("Taille en cm", value=None, step=1, min_value=100, max_value=300)
-            st.date_input(label='Date de naissance' ,value=None, min_value=None, max_value=None, key=None, format='DD/MM/YYYY')
-        with col2:    
-            st.text_input("Prénom") 
-            st.number_input("Poids en kg", value=None, step=1, min_value=30, max_value=300)
-            st.radio("Sexe", ["Homme", "Femme"])
-        st.text_area("Traitement pour la tension arterielle", value='', height=None, max_chars=None, key=None, help="Laisser vide si aucun traitement")
+        nom = st.text_input("Nom")
+        prenom = st.text_input("Prénom") 
+        age = st.number_input("Age", value=None, step=1, min_value=0, max_value=120)
+        sexe = st.radio("Sexe", ["Homme", "Femme"])
+        poids = st.number_input("Poids", value=None, step=1, min_value=30, max_value=300, placeholder="Poids en kg")
+        taille = st.number_input("Taille", value=None, step=1, min_value=100, max_value=300, placeholder="Taille en cm")   
+        traitement = st.text_area("Traitement pour la tension arterielle", value='', height=None, max_chars=None, key=None, help="Laisser vide si aucun traitement", placeholder='Uniquement les traitements pour la tension artérielle. Laisser vide si aucun traitement.')
     with st.expander("Mesures de tension artérielle"):
-        with st.container(height=550, border=False):            
-            edited_df = st.data_editor(data_df, use_container_width=True, height=525,
+        with st.container(height=550, border=False):
+            #data_df.set_index(['Mes'])            
+            edited_df = st.data_editor(data_df, width=800, height=525,
                                         num_rows="fixed", 
                                         column_config={
+                                        "Jour": st.column_config.Column(disabled=True),
                                         "Mesure 1 Systole": st.column_config.NumberColumn(
                                                 help="Valeur de la première mesure de la tension artérielle systolique",
                                                 min_value=60,
@@ -333,8 +333,8 @@ with st.form('input_form'):
     }
         chart_data_without_measure_day_1 = {
         'Jour' : ['Jour 2', 'Jour 3', 'Jour 4', 'Jour 5', 'Jour 6', 'Jour 7'],
-        'Systole' : [moyenne_systole_jour_2, moyenne_systole_jour_3, moyenne_systole_jour_4, moyenne_systole_jour_5, moyenne_systole_jour_6, moyenne_systole_jour_7],
-        'Diastole' : [moyenne_diastole_jour_2, moyenne_diastole_jour_3, moyenne_diastole_jour_4, moyenne_diastole_jour_5, moyenne_diastole_jour_6, moyenne_diastole_jour_7],
+        'Systole' : [moyenne_systole_jour_2_sans_premiere_mesure, moyenne_systole_jour_3_sans_premiere_mesure, moyenne_systole_jour_4_sans_premiere_mesure, moyenne_systole_jour_5_sans_premiere_mesure, moyenne_systole_jour_6_sans_premiere_mesure, moyenne_systole_jour_7_sans_premiere_mesure],
+        'Diastole' : [moyenne_diastole_jour_2_sans_premiere_mesure, moyenne_diastole_jour_3_sans_premiere_mesure, moyenne_diastole_jour_4_sans_premiere_mesure, moyenne_diastole_jour_5_sans_premiere_mesure, moyenne_diastole_jour_6_sans_premiere_mesure, moyenne_diastole_jour_7_sans_premiere_mesure],
     }   
         line_systole = pd.DataFrame(
             {
@@ -450,54 +450,54 @@ with st.form('input_form'):
         else:
             moyenne_globale_diastole_sans_mesure_jour_1 = 0
 
-        
         #draw chart
         st.write("")
-        fig, (ax1, ax2, ax3) = plt.subplots(3, sharey=True, figsize=(10, 15))
+        fig1, ax1 = plt.subplots(1,figsize=(10, 5))
         ax1.scatter(chart_data['Jour'], chart_data['Systole'], label='Systole', color='#F90000')
         ax1.scatter(chart_data['Jour'], chart_data['Diastole'], label='Diastole', color='#0095F9')
         ax1.plot(line_systole['Jour'], line_systole['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
         ax1.plot(line_diastole['Jour'], line_diastole['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
-        #ax1.set_xlabel('Jour')
         ax1.set_ylabel('Pression artérielle (mmHg)')
         ax1.set_title('Valeurs moyennes de la pression artérielle')
         ax1.legend()
-        #plt.savefig("vmpa.svg", format="svg")
-        #st.pyplot(fig)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile1:
+             plt.savefig(tmpfile1.name, format="png")
+        text1 ='''**3 mesures par série** : moyenne quotidienne des 3 mesures de chaque série  
+                    PA = ''' + str(round(moyenne_globale_systole)) + "/" + str(round(moyenne_globale_diastole)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_matin)) + "/" + str(round(moyenne_globale_diastole_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_soir)) + "/" + str(round(moyenne_globale_diastole_soir)) + " mmHg"
+        st.markdown(text1)
+        st.pyplot(fig1)
         
-        #fig, ax = plt.subplots()
+        fig2, ax2 = plt.subplots(1,figsize=(10, 5))
         ax2.scatter(chart_data_without_first_measure['Jour'], chart_data_without_first_measure['Systole'], label='Systole', color='#F90000')
         ax2.scatter(chart_data_without_first_measure['Jour'], chart_data_without_first_measure['Diastole'], label='Diastole', color='#0095F9')
         ax2.plot(line_systole['Jour'], line_systole['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
         ax2.plot(line_diastole['Jour'], line_diastole['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
-        #ax2.set_xlabel('Jour')
         ax2.set_ylabel('Pression artérielle (mmHg)')
         ax2.set_title('Valeurs moyennes de la pression artérielle sans la première mesure')
         ax2.legend()
-        #plt.savefig("vmpaslpm.svg", format="svg")
-        #st.pyplot(fig)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile2:
+             plt.savefig(tmpfile2.name, format="png")
+        text2 = '''**2 mesures par série sans J1** : exclusion de la première mesure de chaque série  
+                    PA = ''' + str(round(moyenne_globale_systole_sans_premiere_mesure)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_premiere_mesure_matin)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_premiere_mesure_soir)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_soir)) + " mmHg"
+        st.markdown(text2)
+        st.pyplot(fig2)
         
-        #fig, ax = plt.subplots()
+
+        fig3, ax3 = plt.subplots(1,figsize=(10, 5))
         ax3.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Systole'], label='Systole', color='#F90000')
         ax3.scatter(chart_data_without_measure_day_1['Jour'], chart_data_without_measure_day_1['Diastole'], label='Diastole', color='#0095F9')
         ax3.plot(line_systole_without_first_measure['Jour'], line_systole_without_first_measure['Systole'], color='#F90000', linestyle='dashed', label='Seuil systole')
         ax3.plot(line_diastole_without_first_measure['Jour'], line_diastole_without_first_measure['Diastole'], color='#0095F9', linestyle='dashed', label='Seuil diastole')
-        # ax3.set_xlabel("Moyenne globale sans les mesures du jour 1 : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(moyenne_globale_diastole_sans_mesure_jour_1) + " mmHg" + "\n"
-        #                +"Moyenne globale matin sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/" + str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg" +"\n"+ 
-        #                "Moyenne globale soir sans les mesures du jour 1 : " + str(moyenne_globale_systole_sans_mesure_jour_1)+ "/"+ str(moyenne_globale_diastole_sans_mesure_jour_1)+ " mmHg")
         ax3.set_ylabel('Pression artérielle (mmHg)')
         ax3.set_title('Valeurs moyennes de la pression artérielle sans les mesures du jour 1')
         ax3.legend()
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
-            plt.savefig(tmpfile.name, format="png")
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile3:
+            plt.savefig(tmpfile3.name, format="png")
+        text3 = '''**2 mesures par série sans J1** : exclusion de la première mesure de chaque série sans le 1e jour  
+                    PA = ''' + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg"
+        st.markdown(text3)
+        st.pyplot(fig3)
 
-        #plt.ylabel('Pression artérielle (mmHg)')
-        st.pyplot(fig)
-        #Listes des moyennes
-        st.write("Moyenne globale : ", round(moyenne_globale_systole), "/", round(moyenne_globale_diastole), " mmHg", ";", "Moyenne globale matin : ", round(moyenne_globale_systole_matin), "/", round(moyenne_globale_diastole_matin), " mmHg", ";", "Moyenne globale soir : ", round(moyenne_globale_systole_soir), "/", round(moyenne_globale_diastole_soir), " mmHg")
-        st.write("Moyenne globale sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure), "/", round(moyenne_globale_diastole_sans_premiere_mesure), " mmHg", ";", "Moyenne globale matin sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure_matin), "/", round(moyenne_globale_diastole_sans_premiere_mesure_matin), " mmHg", ";", "Moyenne globale soir sans la première mesure : ", round(moyenne_globale_systole_sans_premiere_mesure_soir), "/", round(moyenne_globale_diastole_sans_premiere_mesure_soir), " mmHg")
-        st.write("Moyenne globale sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg", ";", "Moyenne globale matin sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg", ";", "Moyenne globale soir sans les mesures du jour 1 : ", round(moyenne_globale_systole_sans_mesure_jour_1), "/", round(moyenne_globale_diastole_sans_mesure_jour_1), " mmHg")
-        
         COLUMNS = [list(edited_df)]  # Get list of dataframe columns
         ROWS = edited_df.values.tolist()  # Get list of dataframe rows
         DATA = COLUMNS + ROWS  # Combine columns and rows in one list
@@ -505,22 +505,56 @@ with st.form('input_form'):
         ##PDF
         pdf = FPDF()
         pdf.add_page()
+        pdf.set_font("Times", size=15)
+        #pdf.cell(0, 5, "Compte-rendu de l'automesure", ln=True)
+        pdf.set_font(style="B")
+        pdf.text(70, 5, "Compte-rendu de l'automesure")
+        pdf.set_font("Times", size=12)
+        pdf.set_font(style="B")
+        pdf.text(15, 12, nom + ' ' + prenom + ' ' + str((age)) + ' ans')
+        pdf.set_font("Times", size=12)
+        pdf.text(120, 17, "Sexe : " + sexe)
+        if taille != 0 and poids != None:
+                imc = round(poids / ((taille/100) ** 2),1)
+                pdf.text(120, 12, "Poids : " + str(poids) + " kg" + " " + "Taille : " + str(taille) + " cm" + " " + "IMC : " + str(imc))
+        else : 
+            pdf.text(120, 12, "Poids : " + " " + "Taille : " + " " + "IMC : ")
+        pdf.set_font("Times", size=10)
+        pdf.set_xy(14, 15)
+        pdf.cell(w=pdf.epw/1.8, h=pdf.eph/98, text='Traitement : ' + traitement, border=True)
+        pdf.set_xy(15, 20)
         pdf.set_font("Times", size=10)
         with pdf.table(
             borders_layout="MINIMAL",
-            align="CENTER",
+            align="LEFT",
             cell_fill_color=200,  # grey
             cell_fill_mode="ROWS",
-            line_height=pdf.font_size,
+            line_height=pdf.font_size/0.9,
             text_align="CENTER",
             width=160,
         ) as table:
             for data_row in DATA:
                 row = table.row()
                 for datum in data_row:
-                    row.cell(str(datum))
-        pdf.image(tmpfile.name, h=pdf.eph/1.5, w=pdf.epw/1.5, x=pdf.epw/4, y=pdf.eph/4)
-        html = create_download_link(pdf.output(dest="S"), "compte-rendu-automesure")
+                    if datum is None:
+                        row.cell('')
+                    else : row.cell(str(datum))
+        pdf.image(tmpfile1.name, h=pdf.eph/3.8, w=pdf.epw/1.5, x=5, y=90)
+        text1 ='''3 mesures par série : moyenne quotidienne des 3 mesures de chaque série  
+                    PA = ''' + str(round(moyenne_globale_systole)) + "/" + str(round(moyenne_globale_diastole)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_matin)) + "/" + str(round(moyenne_globale_diastole_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_soir)) + "/" + str(round(moyenne_globale_diastole_soir)) + " mmHg"
+        text2 = '''2 mesures par série sans J1 : exclusion de la première mesure de chaque série  
+                    PA = ''' + str(round(moyenne_globale_systole_sans_premiere_mesure)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_premiere_mesure_matin)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_premiere_mesure_soir)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_soir)) + " mmHg"
+        text3 = '''2 mesures par série sans J1 : exclusion de la première mesure de chaque série sans le 1e jour  
+                    PA = ''' + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg"
+        pdf.set_xy(1, 83)
+        pdf.multi_cell(pdf.epw,5, text1)
+        pdf.image(tmpfile2.name, h=pdf.eph/3.8, w=pdf.epw/1.5, x=5, y=160)
+        pdf.set_xy(1, 155)
+        pdf.multi_cell(pdf.epw,5, text2)
+        pdf.image(tmpfile3.name, h=pdf.eph/3.8, w=pdf.epw/1.5, x=5, y=230)
+        pdf.set_xy(1, 225)
+        pdf.multi_cell(pdf.epw,5, text3)
+        html = create_download_link(pdf.output(), "compte-rendu-automesure")
 
         st.markdown(html, unsafe_allow_html=True)
         
