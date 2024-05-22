@@ -20,6 +20,7 @@ def create_download_link(val, filename):
 # Titre de l'application
 st.header('Suivi Tension Artérielle', divider=True)
 
+
 data = [{"Jour": 'Jour 1 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
             {"Jour": 'Jour 1 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
             {"Jour": 'Jour 2 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
@@ -477,7 +478,7 @@ with st.form('input_form'):
         ax2.legend()
         with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile2:
              plt.savefig(tmpfile2.name, format="png")
-        text2 = '''**2 mesures par série sans J1** : exclusion de la première mesure de chaque série  
+        text2 = '''**2 mesures par série** : exclusion de la première mesure de chaque série  
                     PA = ''' + str(round(moyenne_globale_systole_sans_premiere_mesure)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_premiere_mesure_matin)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_premiere_mesure_soir)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_soir)) + " mmHg"
         st.markdown(text2)
         st.pyplot(fig2)
@@ -542,7 +543,7 @@ with st.form('input_form'):
         pdf.image(tmpfile1.name, h=pdf.eph/3.8, w=pdf.epw/1.5, x=5, y=90)
         text1 ='''3 mesures par série : moyenne quotidienne des 3 mesures de chaque série  
                     PA = ''' + str(round(moyenne_globale_systole)) + "/" + str(round(moyenne_globale_diastole)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_matin)) + "/" + str(round(moyenne_globale_diastole_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_soir)) + "/" + str(round(moyenne_globale_diastole_soir)) + " mmHg"
-        text2 = '''2 mesures par série sans J1 : exclusion de la première mesure de chaque série  
+        text2 = '''2 mesures par série : exclusion de la première mesure de chaque série  
                     PA = ''' + str(round(moyenne_globale_systole_sans_premiere_mesure)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_premiere_mesure_matin)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_matin)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_premiere_mesure_soir)) + "/" + str(round(moyenne_globale_diastole_sans_premiere_mesure_soir)) + " mmHg"
         text3 = '''2 mesures par série sans J1 : exclusion de la première mesure de chaque série sans le 1e jour  
                     PA = ''' + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA matin : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg" + "; " + "PA soir : " + str(round(moyenne_globale_systole_sans_mesure_jour_1)) + "/" + str(round(moyenne_globale_diastole_sans_mesure_jour_1)) + " mmHg"
