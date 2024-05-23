@@ -560,6 +560,7 @@ with st.form('input_form'):
         st.markdown(html, unsafe_allow_html=True)
         
     else:
-        st.markdown('''Une fois les valeurs complétées, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes.  
-                    **Pour télécharger le compte-rendu, cliquer sur le lien qui apparaitra en bas de page.**''')
+        #st.markdown('''Une fois les valeurs complétées, cliquer sur \"Soumettre le formulaire\" afin  d'afficher les courbes des valeurs moyennes.  
+                    #**Pour télécharger le compte-rendu, cliquer sur le lien qui apparaitra en bas de page.**''')
+        st.markdown('''test''')
         
