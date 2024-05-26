@@ -101,13 +101,13 @@ with st.form('input_form'):
     if submitted:
         #calcul des moyennes
         #Moyenne systole jour 1
-        if edited_df.loc[0, 'Mesure 1 Systole'] != None and edited_df.loc[0, 'Mesure 2 Systole'] != None and edited_df.loc[0, 'Mesure 3 Systole'] != None and edited_df.loc[1, 'Mesure 1 Systole'] != None and edited_df.loc[1, 'Mesure 2 Systole'] != None and edited_df.loc[1, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_1 = (edited_df.loc[0, 'Mesure 1 Systole'] + edited_df.loc[0, 'Mesure 2 Systole'] + edited_df.loc[0, 'Mesure 3 Systole'] + edited_df.loc[1, 'Mesure 1 Systole'] + edited_df.loc[1, 'Mesure 2 Systole'] + edited_df.loc[1, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_1_sans_premiere_mesure = (edited_df.loc[0, 'Mesure 2 Systole'] + edited_df.loc[0, 'Mesure 3 Systole'] + edited_df.loc[1, 'Mesure 2 Systole'] + edited_df.loc[1, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_1_matin = (edited_df.loc[0, 'Mesure 1 Systole'] + edited_df.loc[0, 'Mesure 2 Systole'] + edited_df.loc[0, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_1_soir = (edited_df.loc[1, 'Mesure 1 Systole'] + edited_df.loc[1, 'Mesure 2 Systole'] + edited_df.loc[1, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_1_sans_premiere_mesure_matin = (edited_df.loc[0, 'Mesure 2 Systole'] + edited_df.loc[0, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_1_sans_premiere_mesure_soir = (edited_df.loc[1, 'Mesure 2 Systole'] + edited_df.loc[1, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[0, 'M1 SYS'] != None and edited_df.loc[0, 'M2 SYS'] != None and edited_df.loc[0, 'M3 SYS'] != None and edited_df.loc[1, 'M1 SYS'] != None and edited_df.loc[1, 'M2 SYS'] != None and edited_df.loc[1, 'M3 SYS'] != None:
+            moyenne_systole_jour_1 = (edited_df.loc[0, 'M1 SYS'] + edited_df.loc[0, 'M2 SYS'] + edited_df.loc[0, 'M3 SYS'] + edited_df.loc[1, 'M1 SYS'] + edited_df.loc[1, 'M2 SYS'] + edited_df.loc[1, 'M3 SYS']) / 6
+            moyenne_systole_jour_1_sans_premiere_mesure = (edited_df.loc[0, 'M2 SYS'] + edited_df.loc[0, 'M3 SYS'] + edited_df.loc[1, 'M2 SYS'] + edited_df.loc[1, 'M3 SYS']) / 4
+            moyenne_systole_jour_1_matin = (edited_df.loc[0, 'M1 SYS'] + edited_df.loc[0, 'M2 SYS'] + edited_df.loc[0, 'M3 SYS']) / 3
+            moyenne_systole_jour_1_soir = (edited_df.loc[1, 'M1 SYS'] + edited_df.loc[1, 'M2 SYS'] + edited_df.loc[1, 'M3 SYS']) / 3
+            moyenne_systole_jour_1_sans_premiere_mesure_matin = (edited_df.loc[0, 'M2 SYS'] + edited_df.loc[0, 'M3 SYS']) / 2
+            moyenne_systole_jour_1_sans_premiere_mesure_soir = (edited_df.loc[1, 'M2 SYS'] + edited_df.loc[1, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_1 = 0
             moyenne_systole_jour_1_sans_premiere_mesure = 0
@@ -117,13 +117,13 @@ with st.form('input_form'):
             moyenne_systole_jour_1_sans_premiere_mesure_soir = 0
             
         #Moyenne diastole jour 1
-        if edited_df.loc[0, 'Mesure 1 Diastole'] != None and edited_df.loc[0, 'Mesure 2 Diastole'] != None and edited_df.loc[0, 'Mesure 3 Diastole'] != None and edited_df.loc[1, 'Mesure 1 Diastole'] != None and edited_df.loc[1, 'Mesure 2 Diastole'] != None and edited_df.loc[1, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_1 = (edited_df.loc[0, 'Mesure 1 Diastole'] + edited_df.loc[0, 'Mesure 2 Diastole'] + edited_df.loc[0, 'Mesure 3 Diastole'] + edited_df.loc[1, 'Mesure 1 Diastole'] + edited_df.loc[1, 'Mesure 2 Diastole'] + edited_df.loc[1, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_1_sans_premiere_mesure = (edited_df.loc[0, 'Mesure 2 Diastole'] + edited_df.loc[0, 'Mesure 3 Diastole'] + edited_df.loc[1, 'Mesure 2 Diastole'] + edited_df.loc[1, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_1_matin = (edited_df.loc[0, 'Mesure 1 Diastole'] + edited_df.loc[0, 'Mesure 2 Diastole'] + edited_df.loc[0, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_1_soir = (edited_df.loc[1, 'Mesure 1 Diastole'] + edited_df.loc[1, 'Mesure 2 Diastole'] + edited_df.loc[1, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_1_sans_premiere_mesure_matin = (edited_df.loc[0, 'Mesure 2 Diastole'] + edited_df.loc[0, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_1_sans_premiere_mesure_soir = (edited_df.loc[1, 'Mesure 2 Diastole'] + edited_df.loc[1, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[0, 'M1 DIA'] != None and edited_df.loc[0, 'M2 DIA'] != None and edited_df.loc[0, 'M3 DIA'] != None and edited_df.loc[1, 'M1 DIA'] != None and edited_df.loc[1, 'M2 DIA'] != None and edited_df.loc[1, 'M3 DIA'] != None:
+            moyenne_diastole_jour_1 = (edited_df.loc[0, 'M1 DIA'] + edited_df.loc[0, 'M2 DIA'] + edited_df.loc[0, 'M3 DIA'] + edited_df.loc[1, 'M1 DIA'] + edited_df.loc[1, 'M2 DIA'] + edited_df.loc[1, 'M3 DIA']) / 6
+            moyenne_diastole_jour_1_sans_premiere_mesure = (edited_df.loc[0, 'M2 DIA'] + edited_df.loc[0, 'M3 DIA'] + edited_df.loc[1, 'M2 DIA'] + edited_df.loc[1, 'M3 DIA']) / 4
+            moyenne_diastole_jour_1_matin = (edited_df.loc[0, 'M1 DIA'] + edited_df.loc[0, 'M2 DIA'] + edited_df.loc[0, 'M3 DIA']) / 3
+            moyenne_diastole_jour_1_soir = (edited_df.loc[1, 'M1 DIA'] + edited_df.loc[1, 'M2 DIA'] + edited_df.loc[1, 'M3 DIA']) / 3
+            moyenne_diastole_jour_1_sans_premiere_mesure_matin = (edited_df.loc[0, 'M2 DIA'] + edited_df.loc[0, 'M3 DIA']) / 2
+            moyenne_diastole_jour_1_sans_premiere_mesure_soir = (edited_df.loc[1, 'M2 DIA'] + edited_df.loc[1, 'M3 DIA']) / 2
         
         else :
             moyenne_diastole_jour_1 = 0
@@ -135,13 +135,13 @@ with st.form('input_form'):
             
         
         #Moyenne systole jour 2
-        if edited_df.loc[2, 'Mesure 1 Systole'] != None and edited_df.loc[2, 'Mesure 2 Systole'] != None and edited_df.loc[2, 'Mesure 3 Systole'] != None and edited_df.loc[3, 'Mesure 1 Systole'] != None and edited_df.loc[3, 'Mesure 2 Systole'] != None and edited_df.loc[3, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_2 = (edited_df.loc[2, 'Mesure 1 Systole'] + edited_df.loc[2, 'Mesure 2 Systole'] + edited_df.loc[2, 'Mesure 3 Systole'] + edited_df.loc[3, 'Mesure 1 Systole'] + edited_df.loc[3, 'Mesure 2 Systole'] + edited_df.loc[3, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_2_sans_premiere_mesure = (edited_df.loc[2, 'Mesure 2 Systole'] + edited_df.loc[2, 'Mesure 3 Systole'] + edited_df.loc[3, 'Mesure 2 Systole'] + edited_df.loc[3, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_2_matin = (edited_df.loc[2, 'Mesure 1 Systole'] + edited_df.loc[2, 'Mesure 2 Systole'] + edited_df.loc[2, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_2_soir = (edited_df.loc[3, 'Mesure 1 Systole'] + edited_df.loc[3, 'Mesure 2 Systole'] + edited_df.loc[3, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_2_sans_premiere_mesure_matin = (edited_df.loc[2, 'Mesure 2 Systole'] + edited_df.loc[2, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_2_sans_premiere_mesure_soir = (edited_df.loc[3, 'Mesure 2 Systole'] + edited_df.loc[3, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[2, 'M1 SYS'] != None and edited_df.loc[2, 'M2 SYS'] != None and edited_df.loc[2, 'M3 SYS'] != None and edited_df.loc[3, 'M1 SYS'] != None and edited_df.loc[3, 'M2 SYS'] != None and edited_df.loc[3, 'M3 SYS'] != None:
+            moyenne_systole_jour_2 = (edited_df.loc[2, 'M1 SYS'] + edited_df.loc[2, 'M2 SYS'] + edited_df.loc[2, 'M3 SYS'] + edited_df.loc[3, 'M1 SYS'] + edited_df.loc[3, 'M2 SYS'] + edited_df.loc[3, 'M3 SYS']) / 6
+            moyenne_systole_jour_2_sans_premiere_mesure = (edited_df.loc[2, 'M2 SYS'] + edited_df.loc[2, 'M3 SYS'] + edited_df.loc[3, 'M2 SYS'] + edited_df.loc[3, 'M3 SYS']) / 4
+            moyenne_systole_jour_2_matin = (edited_df.loc[2, 'M1 SYS'] + edited_df.loc[2, 'M2 SYS'] + edited_df.loc[2, 'M3 SYS']) / 3
+            moyenne_systole_jour_2_soir = (edited_df.loc[3, 'M1 SYS'] + edited_df.loc[3, 'M2 SYS'] + edited_df.loc[3, 'M3 SYS']) / 3
+            moyenne_systole_jour_2_sans_premiere_mesure_matin = (edited_df.loc[2, 'M2 SYS'] + edited_df.loc[2, 'M3 SYS']) / 2
+            moyenne_systole_jour_2_sans_premiere_mesure_soir = (edited_df.loc[3, 'M2 SYS'] + edited_df.loc[3, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_2 = 0
             moyenne_systole_jour_2_sans_premiere_mesure = 0
@@ -150,13 +150,13 @@ with st.form('input_form'):
             moyenne_systole_jour_2_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_2_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 2
-        if edited_df.loc[2, 'Mesure 1 Diastole'] != None and edited_df.loc[2, 'Mesure 2 Diastole'] != None and edited_df.loc[2, 'Mesure 3 Diastole'] != None and edited_df.loc[3, 'Mesure 1 Diastole'] != None and edited_df.loc[3, 'Mesure 2 Diastole'] != None and edited_df.loc[3, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_2 = (edited_df.loc[2, 'Mesure 1 Diastole'] + edited_df.loc[2, 'Mesure 2 Diastole'] + edited_df.loc[2, 'Mesure 3 Diastole'] + edited_df.loc[3, 'Mesure 1 Diastole'] + edited_df.loc[3, 'Mesure 2 Diastole'] + edited_df.loc[3, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_2_sans_premiere_mesure = (edited_df.loc[2, 'Mesure 2 Diastole'] + edited_df.loc[2, 'Mesure 3 Diastole'] + edited_df.loc[3, 'Mesure 2 Diastole'] + edited_df.loc[3, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_2_matin = (edited_df.loc[2, 'Mesure 1 Diastole'] + edited_df.loc[2, 'Mesure 2 Diastole'] + edited_df.loc[2, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_2_soir = (edited_df.loc[3, 'Mesure 1 Diastole'] + edited_df.loc[3, 'Mesure 2 Diastole'] + edited_df.loc[3, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_2_sans_premiere_mesure_matin = (edited_df.loc[2, 'Mesure 2 Diastole'] + edited_df.loc[2, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_2_sans_premiere_mesure_soir = (edited_df.loc[3, 'Mesure 2 Diastole'] + edited_df.loc[3, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[2, 'M1 DIA'] != None and edited_df.loc[2, 'M2 DIA'] != None and edited_df.loc[2, 'M3 DIA'] != None and edited_df.loc[3, 'M1 DIA'] != None and edited_df.loc[3, 'M2 DIA'] != None and edited_df.loc[3, 'M3 DIA'] != None:
+            moyenne_diastole_jour_2 = (edited_df.loc[2, 'M1 DIA'] + edited_df.loc[2, 'M2 DIA'] + edited_df.loc[2, 'M3 DIA'] + edited_df.loc[3, 'M1 DIA'] + edited_df.loc[3, 'M2 DIA'] + edited_df.loc[3, 'M3 DIA']) / 6
+            moyenne_diastole_jour_2_sans_premiere_mesure = (edited_df.loc[2, 'M2 DIA'] + edited_df.loc[2, 'M3 DIA'] + edited_df.loc[3, 'M2 DIA'] + edited_df.loc[3, 'M3 DIA']) / 4
+            moyenne_diastole_jour_2_matin = (edited_df.loc[2, 'M1 DIA'] + edited_df.loc[2, 'M2 DIA'] + edited_df.loc[2, 'M3 DIA']) / 3
+            moyenne_diastole_jour_2_soir = (edited_df.loc[3, 'M1 DIA'] + edited_df.loc[3, 'M2 DIA'] + edited_df.loc[3, 'M3 DIA']) / 3
+            moyenne_diastole_jour_2_sans_premiere_mesure_matin = (edited_df.loc[2, 'M2 DIA'] + edited_df.loc[2, 'M3 DIA']) / 2
+            moyenne_diastole_jour_2_sans_premiere_mesure_soir = (edited_df.loc[3, 'M2 DIA'] + edited_df.loc[3, 'M3 DIA']) / 2
         else :
             moyenne_diastole_jour_2 = 0
             moyenne_diastole_jour_2_sans_premiere_mesure = 0
@@ -165,13 +165,13 @@ with st.form('input_form'):
             moyenne_diastole_jour_2_sans_premiere_mesure_matin = 0
             moyenne_diastole_jour_2_sans_premiere_mesure_soir = 0
         #Moyenne systole jour 3
-        if edited_df.loc[4, 'Mesure 1 Systole'] != None and edited_df.loc[4, 'Mesure 2 Systole'] != None and edited_df.loc[4, 'Mesure 3 Systole'] != None and edited_df.loc[5, 'Mesure 1 Systole'] != None and edited_df.loc[5, 'Mesure 2 Systole'] != None and edited_df.loc[5, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_3 = (edited_df.loc[4, 'Mesure 1 Systole'] + edited_df.loc[4, 'Mesure 2 Systole'] + edited_df.loc[4, 'Mesure 3 Systole'] + edited_df.loc[5, 'Mesure 1 Systole'] + edited_df.loc[5, 'Mesure 2 Systole'] + edited_df.loc[5, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_3_sans_premiere_mesure = (edited_df.loc[4, 'Mesure 2 Systole'] + edited_df.loc[4, 'Mesure 3 Systole'] + edited_df.loc[5, 'Mesure 2 Systole'] + edited_df.loc[5, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_3_matin = (edited_df.loc[4, 'Mesure 1 Systole'] + edited_df.loc[4, 'Mesure 2 Systole'] + edited_df.loc[4, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_3_soir = (edited_df.loc[5, 'Mesure 1 Systole'] + edited_df.loc[5, 'Mesure 2 Systole'] + edited_df.loc[5, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_3_sans_premiere_mesure_matin = (edited_df.loc[4, 'Mesure 2 Systole'] + edited_df.loc[4, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_3_sans_premiere_mesure_soir = (edited_df.loc[5, 'Mesure 2 Systole'] + edited_df.loc[5, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[4, 'M1 SYS'] != None and edited_df.loc[4, 'M2 SYS'] != None and edited_df.loc[4, 'M3 SYS'] != None and edited_df.loc[5, 'M1 SYS'] != None and edited_df.loc[5, 'M2 SYS'] != None and edited_df.loc[5, 'M3 SYS'] != None:
+            moyenne_systole_jour_3 = (edited_df.loc[4, 'M1 SYS'] + edited_df.loc[4, 'M2 SYS'] + edited_df.loc[4, 'M3 SYS'] + edited_df.loc[5, 'M1 SYS'] + edited_df.loc[5, 'M2 SYS'] + edited_df.loc[5, 'M3 SYS']) / 6
+            moyenne_systole_jour_3_sans_premiere_mesure = (edited_df.loc[4, 'M2 SYS'] + edited_df.loc[4, 'M3 SYS'] + edited_df.loc[5, 'M2 SYS'] + edited_df.loc[5, 'M3 SYS']) / 4
+            moyenne_systole_jour_3_matin = (edited_df.loc[4, 'M1 SYS'] + edited_df.loc[4, 'M2 SYS'] + edited_df.loc[4, 'M3 SYS']) / 3
+            moyenne_systole_jour_3_soir = (edited_df.loc[5, 'M1 SYS'] + edited_df.loc[5, 'M2 SYS'] + edited_df.loc[5, 'M3 SYS']) / 3
+            moyenne_systole_jour_3_sans_premiere_mesure_matin = (edited_df.loc[4, 'M2 SYS'] + edited_df.loc[4, 'M3 SYS']) / 2
+            moyenne_systole_jour_3_sans_premiere_mesure_soir = (edited_df.loc[5, 'M2 SYS'] + edited_df.loc[5, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_3 = 0
             moyenne_systole_jour_3_sans_premiere_mesure = 0
@@ -181,13 +181,13 @@ with st.form('input_form'):
             moyenne_systole_jour_3_sans_premiere_mesure_soir = 0
         
         #Moyenne diastole jour 3
-        if edited_df.loc[4, 'Mesure 1 Diastole'] != None and edited_df.loc[4, 'Mesure 2 Diastole'] != None and edited_df.loc[4, 'Mesure 3 Diastole'] != None and edited_df.loc[5, 'Mesure 1 Diastole'] != None and edited_df.loc[5, 'Mesure 2 Diastole'] != None and edited_df.loc[5, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_3 = (edited_df.loc[4, 'Mesure 1 Diastole'] + edited_df.loc[4, 'Mesure 2 Diastole'] + edited_df.loc[4, 'Mesure 3 Diastole'] + edited_df.loc[5, 'Mesure 1 Diastole'] + edited_df.loc[5, 'Mesure 2 Diastole'] + edited_df.loc[5, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_3_sans_premiere_mesure = (edited_df.loc[4, 'Mesure 2 Diastole'] + edited_df.loc[4, 'Mesure 3 Diastole'] + edited_df.loc[5, 'Mesure 2 Diastole'] + edited_df.loc[5, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_3_matin = (edited_df.loc[4, 'Mesure 1 Diastole'] + edited_df.loc[4, 'Mesure 2 Diastole'] + edited_df.loc[4, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_3_soir = (edited_df.loc[5, 'Mesure 1 Diastole'] + edited_df.loc[5, 'Mesure 2 Diastole'] + edited_df.loc[5, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_3_sans_premiere_mesure_matin = (edited_df.loc[4, 'Mesure 2 Diastole'] + edited_df.loc[4, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_3_sans_premiere_mesure_soir = (edited_df.loc[5, 'Mesure 2 Diastole'] + edited_df.loc[5, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[4, 'M1 DIA'] != None and edited_df.loc[4, 'M2 DIA'] != None and edited_df.loc[4, 'M3 DIA'] != None and edited_df.loc[5, 'M1 DIA'] != None and edited_df.loc[5, 'M2 DIA'] != None and edited_df.loc[5, 'M3 DIA'] != None:
+            moyenne_diastole_jour_3 = (edited_df.loc[4, 'M1 DIA'] + edited_df.loc[4, 'M2 DIA'] + edited_df.loc[4, 'M3 DIA'] + edited_df.loc[5, 'M1 DIA'] + edited_df.loc[5, 'M2 DIA'] + edited_df.loc[5, 'M3 DIA']) / 6
+            moyenne_diastole_jour_3_sans_premiere_mesure = (edited_df.loc[4, 'M2 DIA'] + edited_df.loc[4, 'M3 DIA'] + edited_df.loc[5, 'M2 DIA'] + edited_df.loc[5, 'M3 DIA']) / 4
+            moyenne_diastole_jour_3_matin = (edited_df.loc[4, 'M1 DIA'] + edited_df.loc[4, 'M2 DIA'] + edited_df.loc[4, 'M3 DIA']) / 3
+            moyenne_diastole_jour_3_soir = (edited_df.loc[5, 'M1 DIA'] + edited_df.loc[5, 'M2 DIA'] + edited_df.loc[5, 'M3 DIA']) / 3
+            moyenne_diastole_jour_3_sans_premiere_mesure_matin = (edited_df.loc[4, 'M2 DIA'] + edited_df.loc[4, 'M3 DIA']) / 2
+            moyenne_diastole_jour_3_sans_premiere_mesure_soir = (edited_df.loc[5, 'M2 DIA'] + edited_df.loc[5, 'M3 DIA']) / 2
             
         else :
             moyenne_diastole_jour_3 = 0
@@ -198,13 +198,13 @@ with st.form('input_form'):
             moyenne_diastole_jour_3_sans_premiere_mesure_soir = 0
         
         #Moyenne systole jour 4
-        if edited_df.loc[6, 'Mesure 1 Systole'] != None and edited_df.loc[6, 'Mesure 2 Systole'] != None and edited_df.loc[6, 'Mesure 3 Systole'] != None and edited_df.loc[7, 'Mesure 1 Systole'] != None and edited_df.loc[7, 'Mesure 2 Systole'] != None and edited_df.loc[7, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_4 = (edited_df.loc[6, 'Mesure 1 Systole'] + edited_df.loc[6, 'Mesure 2 Systole'] + edited_df.loc[6, 'Mesure 3 Systole'] + edited_df.loc[7, 'Mesure 1 Systole'] + edited_df.loc[7, 'Mesure 2 Systole'] + edited_df.loc[7, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_4_sans_premiere_mesure = (edited_df.loc[6, 'Mesure 2 Systole'] + edited_df.loc[6, 'Mesure 3 Systole'] + edited_df.loc[7, 'Mesure 2 Systole'] + edited_df.loc[7, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_4_matin = (edited_df.loc[6, 'Mesure 1 Systole'] + edited_df.loc[6, 'Mesure 2 Systole'] + edited_df.loc[6, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_4_soir = (edited_df.loc[7, 'Mesure 1 Systole'] + edited_df.loc[7, 'Mesure 2 Systole'] + edited_df.loc[7, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_4_sans_premiere_mesure_matin = (edited_df.loc[6, 'Mesure 2 Systole'] + edited_df.loc[6, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_4_sans_premiere_mesure_soir = (edited_df.loc[7, 'Mesure 2 Systole'] + edited_df.loc[7, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[6, 'M1 SYS'] != None and edited_df.loc[6, 'M2 SYS'] != None and edited_df.loc[6, 'M3 SYS'] != None and edited_df.loc[7, 'M1 SYS'] != None and edited_df.loc[7, 'M2 SYS'] != None and edited_df.loc[7, 'M3 SYS'] != None:
+            moyenne_systole_jour_4 = (edited_df.loc[6, 'M1 SYS'] + edited_df.loc[6, 'M2 SYS'] + edited_df.loc[6, 'M3 SYS'] + edited_df.loc[7, 'M1 SYS'] + edited_df.loc[7, 'M2 SYS'] + edited_df.loc[7, 'M3 SYS']) / 6
+            moyenne_systole_jour_4_sans_premiere_mesure = (edited_df.loc[6, 'M2 SYS'] + edited_df.loc[6, 'M3 SYS'] + edited_df.loc[7, 'M2 SYS'] + edited_df.loc[7, 'M3 SYS']) / 4
+            moyenne_systole_jour_4_matin = (edited_df.loc[6, 'M1 SYS'] + edited_df.loc[6, 'M2 SYS'] + edited_df.loc[6, 'M3 SYS']) / 3
+            moyenne_systole_jour_4_soir = (edited_df.loc[7, 'M1 SYS'] + edited_df.loc[7, 'M2 SYS'] + edited_df.loc[7, 'M3 SYS']) / 3
+            moyenne_systole_jour_4_sans_premiere_mesure_matin = (edited_df.loc[6, 'M2 SYS'] + edited_df.loc[6, 'M3 SYS']) / 2
+            moyenne_systole_jour_4_sans_premiere_mesure_soir = (edited_df.loc[7, 'M2 SYS'] + edited_df.loc[7, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_4 = 0
             moyenne_systole_jour_4_sans_premiere_mesure = 0
@@ -214,13 +214,13 @@ with st.form('input_form'):
             moyenne_systole_jour_4_sans_premiere_mesure_soir = 0
             
         #Moyenne diastole jour 4
-        if edited_df.loc[6, 'Mesure 1 Diastole'] != None and edited_df.loc[6, 'Mesure 2 Diastole'] != None and edited_df.loc[6, 'Mesure 3 Diastole'] != None and edited_df.loc[7, 'Mesure 1 Diastole'] != None and edited_df.loc[7, 'Mesure 2 Diastole'] != None and edited_df.loc[7, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_4 = (edited_df.loc[6, 'Mesure 1 Diastole'] + edited_df.loc[6, 'Mesure 2 Diastole'] + edited_df.loc[6, 'Mesure 3 Diastole'] + edited_df.loc[7, 'Mesure 1 Diastole'] + edited_df.loc[7, 'Mesure 2 Diastole'] + edited_df.loc[7, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_4_sans_premiere_mesure = (edited_df.loc[6, 'Mesure 2 Diastole'] + edited_df.loc[6, 'Mesure 3 Diastole'] + edited_df.loc[7, 'Mesure 2 Diastole'] + edited_df.loc[7, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_4_matin = (edited_df.loc[6, 'Mesure 1 Diastole'] + edited_df.loc[6, 'Mesure 2 Diastole'] + edited_df.loc[6, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_4_soir = (edited_df.loc[7, 'Mesure 1 Diastole'] + edited_df.loc[7, 'Mesure 2 Diastole'] + edited_df.loc[7, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_4_sans_premiere_mesure_matin = (edited_df.loc[6, 'Mesure 2 Diastole'] + edited_df.loc[6, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_4_sans_premiere_mesure_soir = (edited_df.loc[7, 'Mesure 2 Diastole'] + edited_df.loc[7, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[6, 'M1 DIA'] != None and edited_df.loc[6, 'M2 DIA'] != None and edited_df.loc[6, 'M3 DIA'] != None and edited_df.loc[7, 'M1 DIA'] != None and edited_df.loc[7, 'M2 DIA'] != None and edited_df.loc[7, 'M3 DIA'] != None:
+            moyenne_diastole_jour_4 = (edited_df.loc[6, 'M1 DIA'] + edited_df.loc[6, 'M2 DIA'] + edited_df.loc[6, 'M3 DIA'] + edited_df.loc[7, 'M1 DIA'] + edited_df.loc[7, 'M2 DIA'] + edited_df.loc[7, 'M3 DIA']) / 6
+            moyenne_diastole_jour_4_sans_premiere_mesure = (edited_df.loc[6, 'M2 DIA'] + edited_df.loc[6, 'M3 DIA'] + edited_df.loc[7, 'M2 DIA'] + edited_df.loc[7, 'M3 DIA']) / 4
+            moyenne_diastole_jour_4_matin = (edited_df.loc[6, 'M1 DIA'] + edited_df.loc[6, 'M2 DIA'] + edited_df.loc[6, 'M3 DIA']) / 3
+            moyenne_diastole_jour_4_soir = (edited_df.loc[7, 'M1 DIA'] + edited_df.loc[7, 'M2 DIA'] + edited_df.loc[7, 'M3 DIA']) / 3
+            moyenne_diastole_jour_4_sans_premiere_mesure_matin = (edited_df.loc[6, 'M2 DIA'] + edited_df.loc[6, 'M3 DIA']) / 2
+            moyenne_diastole_jour_4_sans_premiere_mesure_soir = (edited_df.loc[7, 'M2 DIA'] + edited_df.loc[7, 'M3 DIA']) / 2
         else :
             moyenne_diastole_jour_4 = 0
             moyenne_diastole_jour_4_sans_premiere_mesure = 0
@@ -230,13 +230,13 @@ with st.form('input_form'):
             moyenne_diastole_jour_4_sans_premiere_mesure_soir = 0
             
         #Moyenne systole jour 5
-        if edited_df.loc[8, 'Mesure 1 Systole'] != None and edited_df.loc[8, 'Mesure 2 Systole'] != None and edited_df.loc[8, 'Mesure 3 Systole'] != None and edited_df.loc[9, 'Mesure 1 Systole'] != None and edited_df.loc[9, 'Mesure 2 Systole'] != None and edited_df.loc[9, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_5 = (edited_df.loc[8, 'Mesure 1 Systole'] + edited_df.loc[8, 'Mesure 2 Systole'] + edited_df.loc[8, 'Mesure 3 Systole'] + edited_df.loc[9, 'Mesure 1 Systole'] + edited_df.loc[9, 'Mesure 2 Systole'] + edited_df.loc[9, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_5_sans_premiere_mesure = (edited_df.loc[8, 'Mesure 2 Systole'] + edited_df.loc[8, 'Mesure 3 Systole'] + edited_df.loc[9, 'Mesure 2 Systole'] + edited_df.loc[9, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_5_matin = (edited_df.loc[8, 'Mesure 1 Systole'] + edited_df.loc[8, 'Mesure 2 Systole'] + edited_df.loc[8, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_5_soir = (edited_df.loc[9, 'Mesure 1 Systole'] + edited_df.loc[9, 'Mesure 2 Systole'] + edited_df.loc[9, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_5_sans_premiere_mesure_matin = (edited_df.loc[8, 'Mesure 2 Systole'] + edited_df.loc[8, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_5_sans_premiere_mesure_soir = (edited_df.loc[9, 'Mesure 2 Systole'] + edited_df.loc[9, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[8, 'M1 SYS'] != None and edited_df.loc[8, 'M2 SYS'] != None and edited_df.loc[8, 'M3 SYS'] != None and edited_df.loc[9, 'M1 SYS'] != None and edited_df.loc[9, 'M2 SYS'] != None and edited_df.loc[9, 'M3 SYS'] != None:
+            moyenne_systole_jour_5 = (edited_df.loc[8, 'M1 SYS'] + edited_df.loc[8, 'M2 SYS'] + edited_df.loc[8, 'M3 SYS'] + edited_df.loc[9, 'M1 SYS'] + edited_df.loc[9, 'M2 SYS'] + edited_df.loc[9, 'M3 SYS']) / 6
+            moyenne_systole_jour_5_sans_premiere_mesure = (edited_df.loc[8, 'M2 SYS'] + edited_df.loc[8, 'M3 SYS'] + edited_df.loc[9, 'M2 SYS'] + edited_df.loc[9, 'M3 SYS']) / 4
+            moyenne_systole_jour_5_matin = (edited_df.loc[8, 'M1 SYS'] + edited_df.loc[8, 'M2 SYS'] + edited_df.loc[8, 'M3 SYS']) / 3
+            moyenne_systole_jour_5_soir = (edited_df.loc[9, 'M1 SYS'] + edited_df.loc[9, 'M2 SYS'] + edited_df.loc[9, 'M3 SYS']) / 3
+            moyenne_systole_jour_5_sans_premiere_mesure_matin = (edited_df.loc[8, 'M2 SYS'] + edited_df.loc[8, 'M3 SYS']) / 2
+            moyenne_systole_jour_5_sans_premiere_mesure_soir = (edited_df.loc[9, 'M2 SYS'] + edited_df.loc[9, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_5 = 0
             moyenne_systole_jour_5_sans_premiere_mesure = 0
@@ -246,13 +246,13 @@ with st.form('input_form'):
             moyenne_systole_jour_5_sans_premiere_mesure_soir = 0
         
         #Moyenne diastole jour 5
-        if edited_df.loc[8, 'Mesure 1 Diastole'] != None and edited_df.loc[8, 'Mesure 2 Diastole'] != None and edited_df.loc[8, 'Mesure 3 Diastole'] != None and edited_df.loc[9, 'Mesure 1 Diastole'] != None and edited_df.loc[9, 'Mesure 2 Diastole'] != None and edited_df.loc[9, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_5 = (edited_df.loc[8, 'Mesure 1 Diastole'] + edited_df.loc[8, 'Mesure 2 Diastole'] + edited_df.loc[8, 'Mesure 3 Diastole'] + edited_df.loc[9, 'Mesure 1 Diastole'] + edited_df.loc[9, 'Mesure 2 Diastole'] + edited_df.loc[9, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_5_sans_premiere_mesure = (edited_df.loc[8, 'Mesure 2 Diastole'] + edited_df.loc[8, 'Mesure 3 Diastole'] + edited_df.loc[9, 'Mesure 2 Diastole'] + edited_df.loc[9, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_5_matin = (edited_df.loc[8, 'Mesure 1 Diastole'] + edited_df.loc[8, 'Mesure 2 Diastole'] + edited_df.loc[8, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_5_soir = (edited_df.loc[9, 'Mesure 1 Diastole'] + edited_df.loc[9, 'Mesure 2 Diastole'] + edited_df.loc[9, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_5_sans_premiere_mesure_matin = (edited_df.loc[8, 'Mesure 2 Diastole'] + edited_df.loc[8, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_5_sans_premiere_mesure_soir = (edited_df.loc[9, 'Mesure 2 Diastole'] + edited_df.loc[9, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[8, 'M1 DIA'] != None and edited_df.loc[8, 'M2 DIA'] != None and edited_df.loc[8, 'M3 DIA'] != None and edited_df.loc[9, 'M1 DIA'] != None and edited_df.loc[9, 'M2 DIA'] != None and edited_df.loc[9, 'M3 DIA'] != None:
+            moyenne_diastole_jour_5 = (edited_df.loc[8, 'M1 DIA'] + edited_df.loc[8, 'M2 DIA'] + edited_df.loc[8, 'M3 DIA'] + edited_df.loc[9, 'M1 DIA'] + edited_df.loc[9, 'M2 DIA'] + edited_df.loc[9, 'M3 DIA']) / 6
+            moyenne_diastole_jour_5_sans_premiere_mesure = (edited_df.loc[8, 'M2 DIA'] + edited_df.loc[8, 'M3 DIA'] + edited_df.loc[9, 'M2 DIA'] + edited_df.loc[9, 'M3 DIA']) / 4
+            moyenne_diastole_jour_5_matin = (edited_df.loc[8, 'M1 DIA'] + edited_df.loc[8, 'M2 DIA'] + edited_df.loc[8, 'M3 DIA']) / 3
+            moyenne_diastole_jour_5_soir = (edited_df.loc[9, 'M1 DIA'] + edited_df.loc[9, 'M2 DIA'] + edited_df.loc[9, 'M3 DIA']) / 3
+            moyenne_diastole_jour_5_sans_premiere_mesure_matin = (edited_df.loc[8, 'M2 DIA'] + edited_df.loc[8, 'M3 DIA']) / 2
+            moyenne_diastole_jour_5_sans_premiere_mesure_soir = (edited_df.loc[9, 'M2 DIA'] + edited_df.loc[9, 'M3 DIA']) / 2
         else :
             moyenne_diastole_jour_5 = 0
             moyenne_diastole_jour_5_sans_premiere_mesure = 0
@@ -261,13 +261,13 @@ with st.form('input_form'):
             moyenne_diastole_jour_5_sans_premiere_mesure_matin = 0
             moyenne_diastole_jour_5_sans_premiere_mesure_soir = 0
         #Moyenne systole jour 6
-        if edited_df.loc[10, 'Mesure 1 Systole'] != None and edited_df.loc[10, 'Mesure 2 Systole'] != None and edited_df.loc[10, 'Mesure 3 Systole'] != None and edited_df.loc[11, 'Mesure 1 Systole'] != None and edited_df.loc[11, 'Mesure 2 Systole'] != None and edited_df.loc[11, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_6 = (edited_df.loc[10, 'Mesure 1 Systole'] + edited_df.loc[10, 'Mesure 2 Systole'] + edited_df.loc[10, 'Mesure 3 Systole'] + edited_df.loc[11, 'Mesure 1 Systole'] + edited_df.loc[11, 'Mesure 2 Systole'] + edited_df.loc[11, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_6_sans_premiere_mesure = (edited_df.loc[10, 'Mesure 2 Systole'] + edited_df.loc[10, 'Mesure 3 Systole'] + edited_df.loc[11, 'Mesure 2 Systole'] + edited_df.loc[11, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_6_matin = (edited_df.loc[10, 'Mesure 1 Systole'] + edited_df.loc[10, 'Mesure 2 Systole'] + edited_df.loc[10, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_6_soir = (edited_df.loc[11, 'Mesure 1 Systole'] + edited_df.loc[11, 'Mesure 2 Systole'] + edited_df.loc[11, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_6_sans_premiere_mesure_matin = (edited_df.loc[10, 'Mesure 2 Systole'] + edited_df.loc[10, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_6_sans_premiere_mesure_soir = (edited_df.loc[11, 'Mesure 2 Systole'] + edited_df.loc[11, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[10, 'M1 SYS'] != None and edited_df.loc[10, 'M2 SYS'] != None and edited_df.loc[10, 'M3 SYS'] != None and edited_df.loc[11, 'M1 SYS'] != None and edited_df.loc[11, 'M2 SYS'] != None and edited_df.loc[11, 'M3 SYS'] != None:
+            moyenne_systole_jour_6 = (edited_df.loc[10, 'M1 SYS'] + edited_df.loc[10, 'M2 SYS'] + edited_df.loc[10, 'M3 SYS'] + edited_df.loc[11, 'M1 SYS'] + edited_df.loc[11, 'M2 SYS'] + edited_df.loc[11, 'M3 SYS']) / 6
+            moyenne_systole_jour_6_sans_premiere_mesure = (edited_df.loc[10, 'M2 SYS'] + edited_df.loc[10, 'M3 SYS'] + edited_df.loc[11, 'M2 SYS'] + edited_df.loc[11, 'M3 SYS']) / 4
+            moyenne_systole_jour_6_matin = (edited_df.loc[10, 'M1 SYS'] + edited_df.loc[10, 'M2 SYS'] + edited_df.loc[10, 'M3 SYS']) / 3
+            moyenne_systole_jour_6_soir = (edited_df.loc[11, 'M1 SYS'] + edited_df.loc[11, 'M2 SYS'] + edited_df.loc[11, 'M3 SYS']) / 3
+            moyenne_systole_jour_6_sans_premiere_mesure_matin = (edited_df.loc[10, 'M2 SYS'] + edited_df.loc[10, 'M3 SYS']) / 2
+            moyenne_systole_jour_6_sans_premiere_mesure_soir = (edited_df.loc[11, 'M2 SYS'] + edited_df.loc[11, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_6 = 0
             moyenne_systole_jour_6_sans_premiere_mesure = 0
@@ -276,13 +276,13 @@ with st.form('input_form'):
             moyenne_systole_jour_6_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_6_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 6
-        if edited_df.loc[10, 'Mesure 1 Diastole'] != None and edited_df.loc[10, 'Mesure 2 Diastole'] != None and edited_df.loc[10, 'Mesure 3 Diastole'] != None and edited_df.loc[11, 'Mesure 1 Diastole'] != None and edited_df.loc[11, 'Mesure 2 Diastole'] != None and edited_df.loc[11, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_6 = (edited_df.loc[10, 'Mesure 1 Diastole'] + edited_df.loc[10, 'Mesure 2 Diastole'] + edited_df.loc[10, 'Mesure 3 Diastole'] + edited_df.loc[11, 'Mesure 1 Diastole'] + edited_df.loc[11, 'Mesure 2 Diastole'] + edited_df.loc[11, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_6_sans_premiere_mesure = (edited_df.loc[10, 'Mesure 2 Diastole'] + edited_df.loc[10, 'Mesure 3 Diastole'] + edited_df.loc[11, 'Mesure 2 Diastole'] + edited_df.loc[11, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_6_matin = (edited_df.loc[10, 'Mesure 1 Diastole'] + edited_df.loc[10, 'Mesure 2 Diastole'] + edited_df.loc[10, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_6_soir = (edited_df.loc[11, 'Mesure 1 Diastole'] + edited_df.loc[11, 'Mesure 2 Diastole'] + edited_df.loc[11, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_6_sans_premiere_mesure_matin = (edited_df.loc[10, 'Mesure 2 Diastole'] + edited_df.loc[10, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_6_sans_premiere_mesure_soir = (edited_df.loc[11, 'Mesure 2 Diastole'] + edited_df.loc[11, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[10, 'M1 DIA'] != None and edited_df.loc[10, 'M2 DIA'] != None and edited_df.loc[10, 'M3 DIA'] != None and edited_df.loc[11, 'M1 DIA'] != None and edited_df.loc[11, 'M2 DIA'] != None and edited_df.loc[11, 'M3 DIA'] != None:
+            moyenne_diastole_jour_6 = (edited_df.loc[10, 'M1 DIA'] + edited_df.loc[10, 'M2 DIA'] + edited_df.loc[10, 'M3 DIA'] + edited_df.loc[11, 'M1 DIA'] + edited_df.loc[11, 'M2 DIA'] + edited_df.loc[11, 'M3 DIA']) / 6
+            moyenne_diastole_jour_6_sans_premiere_mesure = (edited_df.loc[10, 'M2 DIA'] + edited_df.loc[10, 'M3 DIA'] + edited_df.loc[11, 'M2 DIA'] + edited_df.loc[11, 'M3 DIA']) / 4
+            moyenne_diastole_jour_6_matin = (edited_df.loc[10, 'M1 DIA'] + edited_df.loc[10, 'M2 DIA'] + edited_df.loc[10, 'M3 DIA']) / 3
+            moyenne_diastole_jour_6_soir = (edited_df.loc[11, 'M1 DIA'] + edited_df.loc[11, 'M2 DIA'] + edited_df.loc[11, 'M3 DIA']) / 3
+            moyenne_diastole_jour_6_sans_premiere_mesure_matin = (edited_df.loc[10, 'M2 DIA'] + edited_df.loc[10, 'M3 DIA']) / 2
+            moyenne_diastole_jour_6_sans_premiere_mesure_soir = (edited_df.loc[11, 'M2 DIA'] + edited_df.loc[11, 'M3 DIA']) / 2
         else :
             moyenne_diastole_jour_6 = 0
             moyenne_diastole_jour_6_sans_premiere_mesure = 0
@@ -292,13 +292,13 @@ with st.form('input_form'):
             moyenne_diastole_jour_6_sans_premiere_mesure_soir = 0
         
         #Moyenne systole jour 7
-        if edited_df.loc[12, 'Mesure 1 Systole'] != None and edited_df.loc[12, 'Mesure 2 Systole'] != None and edited_df.loc[12, 'Mesure 3 Systole'] != None and edited_df.loc[13, 'Mesure 1 Systole'] != None and edited_df.loc[13, 'Mesure 2 Systole'] != None and edited_df.loc[13, 'Mesure 3 Systole'] != None:
-            moyenne_systole_jour_7 = (edited_df.loc[12, 'Mesure 1 Systole'] + edited_df.loc[12, 'Mesure 2 Systole'] + edited_df.loc[12, 'Mesure 3 Systole'] + edited_df.loc[13, 'Mesure 1 Systole'] + edited_df.loc[13, 'Mesure 2 Systole'] + edited_df.loc[13, 'Mesure 3 Systole']) / 6
-            moyenne_systole_jour_7_sans_premiere_mesure = (edited_df.loc[12, 'Mesure 2 Systole'] + edited_df.loc[12, 'Mesure 3 Systole'] + edited_df.loc[13, 'Mesure 2 Systole'] + edited_df.loc[13, 'Mesure 3 Systole']) / 4
-            moyenne_systole_jour_7_matin = (edited_df.loc[12, 'Mesure 1 Systole'] + edited_df.loc[12, 'Mesure 2 Systole'] + edited_df.loc[12, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_7_soir = (edited_df.loc[13, 'Mesure 1 Systole'] + edited_df.loc[13, 'Mesure 2 Systole'] + edited_df.loc[13, 'Mesure 3 Systole']) / 3
-            moyenne_systole_jour_7_sans_premiere_mesure_matin = (edited_df.loc[12, 'Mesure 2 Systole'] + edited_df.loc[12, 'Mesure 3 Systole']) / 2
-            moyenne_systole_jour_7_sans_premiere_mesure_soir = (edited_df.loc[13, 'Mesure 2 Systole'] + edited_df.loc[13, 'Mesure 3 Systole']) / 2
+        if edited_df.loc[12, 'M1 SYS'] != None and edited_df.loc[12, 'M2 SYS'] != None and edited_df.loc[12, 'M3 SYS'] != None and edited_df.loc[13, 'M1 SYS'] != None and edited_df.loc[13, 'M2 SYS'] != None and edited_df.loc[13, 'M3 SYS'] != None:
+            moyenne_systole_jour_7 = (edited_df.loc[12, 'M1 SYS'] + edited_df.loc[12, 'M2 SYS'] + edited_df.loc[12, 'M3 SYS'] + edited_df.loc[13, 'M1 SYS'] + edited_df.loc[13, 'M2 SYS'] + edited_df.loc[13, 'M3 SYS']) / 6
+            moyenne_systole_jour_7_sans_premiere_mesure = (edited_df.loc[12, 'M2 SYS'] + edited_df.loc[12, 'M3 SYS'] + edited_df.loc[13, 'M2 SYS'] + edited_df.loc[13, 'M3 SYS']) / 4
+            moyenne_systole_jour_7_matin = (edited_df.loc[12, 'M1 SYS'] + edited_df.loc[12, 'M2 SYS'] + edited_df.loc[12, 'M3 SYS']) / 3
+            moyenne_systole_jour_7_soir = (edited_df.loc[13, 'M1 SYS'] + edited_df.loc[13, 'M2 SYS'] + edited_df.loc[13, 'M3 SYS']) / 3
+            moyenne_systole_jour_7_sans_premiere_mesure_matin = (edited_df.loc[12, 'M2 SYS'] + edited_df.loc[12, 'M3 SYS']) / 2
+            moyenne_systole_jour_7_sans_premiere_mesure_soir = (edited_df.loc[13, 'M2 SYS'] + edited_df.loc[13, 'M3 SYS']) / 2
         else :
             moyenne_systole_jour_7 = 0
             moyenne_systole_jour_7_sans_premiere_mesure = 0
@@ -307,13 +307,13 @@ with st.form('input_form'):
             moyenne_systole_jour_7_sans_premiere_mesure_matin = 0
             moyenne_systole_jour_7_sans_premiere_mesure_soir = 0
         #Moyenne diastole jour 7
-        if edited_df.loc[12, 'Mesure 1 Diastole'] != None and edited_df.loc[12, 'Mesure 2 Diastole'] != None and edited_df.loc[12, 'Mesure 3 Diastole'] != None and edited_df.loc[13, 'Mesure 1 Diastole'] != None and edited_df.loc[13, 'Mesure 2 Diastole'] != None and edited_df.loc[13, 'Mesure 3 Diastole'] != None:
-            moyenne_diastole_jour_7 = (edited_df.loc[12, 'Mesure 1 Diastole'] + edited_df.loc[12, 'Mesure 2 Diastole'] + edited_df.loc[12, 'Mesure 3 Diastole'] + edited_df.loc[13, 'Mesure 1 Diastole'] + edited_df.loc[13, 'Mesure 2 Diastole'] + edited_df.loc[13, 'Mesure 3 Diastole']) / 6
-            moyenne_diastole_jour_7_sans_premiere_mesure = (edited_df.loc[12, 'Mesure 2 Diastole'] + edited_df.loc[12, 'Mesure 3 Diastole'] + edited_df.loc[13, 'Mesure 2 Diastole'] + edited_df.loc[13, 'Mesure 3 Diastole']) / 4
-            moyenne_diastole_jour_7_matin = (edited_df.loc[12, 'Mesure 1 Diastole'] + edited_df.loc[12, 'Mesure 2 Diastole'] + edited_df.loc[12, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_7_soir = (edited_df.loc[13, 'Mesure 1 Diastole'] + edited_df.loc[13, 'Mesure 2 Diastole'] + edited_df.loc[13, 'Mesure 3 Diastole']) / 3
-            moyenne_diastole_jour_7_sans_premiere_mesure_matin = (edited_df.loc[12, 'Mesure 2 Diastole'] + edited_df.loc[12, 'Mesure 3 Diastole']) / 2
-            moyenne_diastole_jour_7_sans_premiere_mesure_soir = (edited_df.loc[13, 'Mesure 2 Diastole'] + edited_df.loc[13, 'Mesure 3 Diastole']) / 2
+        if edited_df.loc[12, 'M1 DIA'] != None and edited_df.loc[12, 'M2 DIA'] != None and edited_df.loc[12, 'M3 DIA'] != None and edited_df.loc[13, 'M1 DIA'] != None and edited_df.loc[13, 'M2 DIA'] != None and edited_df.loc[13, 'M3 DIA'] != None:
+            moyenne_diastole_jour_7 = (edited_df.loc[12, 'M1 DIA'] + edited_df.loc[12, 'M2 DIA'] + edited_df.loc[12, 'M3 DIA'] + edited_df.loc[13, 'M1 DIA'] + edited_df.loc[13, 'M2 DIA'] + edited_df.loc[13, 'M3 DIA']) / 6
+            moyenne_diastole_jour_7_sans_premiere_mesure = (edited_df.loc[12, 'M2 DIA'] + edited_df.loc[12, 'M3 DIA'] + edited_df.loc[13, 'M2 DIA'] + edited_df.loc[13, 'M3 DIA']) / 4
+            moyenne_diastole_jour_7_matin = (edited_df.loc[12, 'M1 DIA'] + edited_df.loc[12, 'M2 DIA'] + edited_df.loc[12, 'M3 DIA']) / 3
+            moyenne_diastole_jour_7_soir = (edited_df.loc[13, 'M1 DIA'] + edited_df.loc[13, 'M2 DIA'] + edited_df.loc[13, 'M3 DIA']) / 3
+            moyenne_diastole_jour_7_sans_premiere_mesure_matin = (edited_df.loc[12, 'M2 DIA'] + edited_df.loc[12, 'M3 DIA']) / 2
+            moyenne_diastole_jour_7_sans_premiere_mesure_soir = (edited_df.loc[13, 'M2 DIA'] + edited_df.loc[13, 'M3 DIA']) / 2
         else :
             moyenne_diastole_jour_7 = 0
             moyenne_diastole_jour_7_sans_premiere_mesure = 0
