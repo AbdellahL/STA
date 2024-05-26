@@ -41,6 +41,7 @@ data_df = pd.DataFrame(data)
 with st.form('input_form'):
     st.write("Veuillez remplir les informations suivantes ainsi que les valeurs de tension artérielle")
     with st.expander("Informations du patient"):
+        date_debut_mesure = st.date_input("Date de début de mesure", value='today', format="DD/MM/YYYY")
         nom = st.text_input("Nom")
         prenom = st.text_input("Prénom") 
         age = st.number_input("Age", value=None, step=1, min_value=0, max_value=120)
