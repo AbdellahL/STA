@@ -15,26 +15,26 @@ def create_download_link(val, filename):
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Télécharger le Compte-Rendu</a>'
         
 
-#st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # Titre de l'application
 st.header('Suivi Tension Artérielle', divider=True)
 
 
-data = [{"Jour": 'Jour 1 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 1 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 2 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 2 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 3 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 3 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 4 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 4 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 5 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 5 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 6 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 6 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 7 Matin', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None},
-            {"Jour": 'Jour 7 Soir', "Mesure 1 Systole": None, "Mesure 1 Diastole": None, "Mesure 2 Systole": None, "Mesure 2 Diastole": None, "Mesure 3 Systole": None, "Mesure 3 Diastole": None}]
+data = [{"Jour": 'Jour 1 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 1 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 2 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 2 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 3 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 3 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 4 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 4 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 5 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 5 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 6 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 6 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 7 Matin', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None},
+            {"Jour": 'Jour 7 Soir', "M1 SYS": None, "M1 DIA": None, "M2 SYS": None, "M2 DIA": None, "M3 SYS": None, "M3 DIA": None}]
 
 data_df = pd.DataFrame(data)
 
@@ -50,48 +50,49 @@ with st.form('input_form'):
         traitement = st.text_area("Traitement pour la tension arterielle", value='', height=None, max_chars=None, key=None, help="Laisser vide si aucun traitement", placeholder='Uniquement les traitements pour la tension artérielle. Laisser vide si aucun traitement.')
     with st.expander("Mesures de tension artérielle"):
         with st.container(height=550, border=False):
-            #data_df.set_index(['Mes'])            
             edited_df = st.data_editor(data_df, width=800, height=525,
                                         num_rows="fixed", 
                                         column_config={
                                         "Jour": st.column_config.Column(disabled=True),
-                                        "Mesure 1 Systole": st.column_config.NumberColumn(
+                                        "M1 SYS": st.column_config.NumberColumn(
                                                 help="Valeur de la première mesure de la tension artérielle systolique",
                                                 min_value=60,
                                                 max_value=300,
                                                 step=1,
                                                 default=None),
-                                            "Mesure 1 Diastole": st.column_config.NumberColumn(
+                                        "M1 DIA": st.column_config.NumberColumn(
                                                 help="Valeur de la première mesure de la tension artérielle diastolique",
                                                 min_value=40,
                                                 max_value=140,
                                                 step=1,
                                                 default=None), 
-                                            "Mesure 2 Systole": st.column_config.NumberColumn(
+                                        "M2 SYS": st.column_config.NumberColumn(
                                                 help="Valeur de la deuxième mesure de la tension artérielle systolique",
                                                 min_value=60,
                                                 max_value=300,
                                                 step=1,
                                                 default=None), 
-                                            "Mesure 2 Diastole": st.column_config.NumberColumn(
+                                        "M2 DIA": st.column_config.NumberColumn(
                                                 help="Valeur de la deuxième mesure de la tension artérielle diastolique",
                                                 min_value=40,
                                                 max_value=140,
                                                 step=1,
                                                 default=None), 
-                                            "Mesure 3 Systole": st.column_config.NumberColumn(
+                                        "M3 SYS": st.column_config.NumberColumn(
                                                 help="Valeur de la troisième mesure de la tension artérielle systolique",
                                                 min_value=60,
                                                 max_value=300,
                                                 step=1,
                                                 default=None), 
-                                            "Mesure 3 Diastole": st.column_config.NumberColumn(
+                                            "M3 DIA": st.column_config.NumberColumn(
                                                 help="Valeur de la troisième mesure de la tension artérielle diastolique",
                                                 min_value=40,
                                                 max_value=140,
                                                 step=1,
                                                 default=None)},
                                         hide_index=True)
+            #st.markdown(''' SYS : Systole ; DIA : Diastole  
+                            #M1 : Mesure 1 ; M2 : Mesure 2 ; M3 : Mesure 3''')
     submitted = st.form_submit_button("Soumettre le formulaire")
     
     if submitted:
