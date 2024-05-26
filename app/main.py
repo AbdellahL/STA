@@ -50,7 +50,9 @@ with st.form('input_form'):
         traitement = st.text_area("Traitement pour la tension arterielle", value='', height=None, max_chars=None, key=None, help="Laisser vide si aucun traitement", placeholder='Uniquement les traitements pour la tension artérielle. Laisser vide si aucun traitement.')
     with st.expander("Mesures de tension artérielle"):
         with st.container(height=550, border=False):
-            edited_df = st.data_editor(data_df, width=800, height=525,
+            edited_df = st.data_editor(data_df, #width=800, 
+                                       height=525,
+                                       use_container_width=True,
                                         num_rows="fixed", 
                                         column_config={
                                         "Jour": st.column_config.Column(disabled=True),
