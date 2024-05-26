@@ -92,7 +92,7 @@ with st.form('input_form'):
                                                 default=None)},
                                         hide_index=True)
             #st.markdown(''' SYS : Systole ; DIA : Diastole  
-                            #M1 : Mesure 1 ; M2 : Mesure 2 ; M3 : Mesure 3''')
+                            #M1 : Mesure 1 ; M2 : Mesure 2 ; M3 : Mesure 3 hdsjb''')
     submitted = st.form_submit_button("Soumettre le formulaire")
     
     if submitted:
